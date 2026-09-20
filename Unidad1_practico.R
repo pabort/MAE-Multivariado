@@ -89,6 +89,14 @@ sapply(Datos, fivenum) |>
   `rownames<-`(c("min", "Q1", "mediana", "Q3", "max"))
 
 
+# [exceso-curtosis]
+
+Datos |>
+  summarise(across(everything(), moments::kurtosis)) |>
+  pivot_longer(everything(), names_to = "variable", values_to = "curtosis") |>
+  mutate(exceso = curtosis - 3)
+
+
 ### Comparación entre especies ---------------------------------------------
 
 # [descriptivas-por-especie]
@@ -238,9 +246,54 @@ c(condicion_S = kappa(S), condicion_R = kappa(R))
 eS <- eigen(S)
 eS
 
-# La varianza total y generalizada también se recuperan a partir de los autovalores
-sum(eS$values)   # = varianza total = tr(S)
-prod(eS$values)  # = varianza generalizada = det(S)
+
+# [verificacion-reconstruccion-S]
+
+Lambda <- diag(eS$values)
+
+S_reconstruida <- eS$vectors %*% Lambda %*% t(eS$vectors)
+
+chequeo_reconstruccion <- isTRUE(all.equal(S, S_reconstruida, check.attributes = FALSE))
+stopifnot(chequeo_reconstruccion)
+chequeo_reconstruccion
+
+
+# [verificacion-ortogonalidad]
+
+chequeo_ortogonal <- isTRUE(all.equal(eS$vectors %*% t(eS$vectors), diag(p), check.attributes = FALSE))
+stopifnot(chequeo_ortogonal)
+chequeo_ortogonal
+
+
+# [traza-det-desde-autovalores]
+
+chequeo_traza <- isTRUE(all.equal(sum(diag(S)), sum(eS$values)))
+chequeo_det   <- isTRUE(all.equal(det(S), prod(eS$values)))
+stopifnot(chequeo_traza, chequeo_det)
+
+tibble(
+  cantidad          = c("Traza", "Determinante"),
+  desde_S           = c(sum(diag(S)), det(S)),
+  desde_autovalores = c(sum(eS$values), prod(eS$values))
+)
+
+
+# [suma-rango-1]
+
+suma_rango1 <- Reduce(`+`, lapply(1:p, \(k) eS$values[k] * outer(eS$vectors[, k], eS$vectors[, k])))
+
+chequeo_rango1 <- isTRUE(all.equal(S, suma_rango1, check.attributes = FALSE))
+stopifnot(chequeo_rango1)
+chequeo_rango1
+
+
+# [proporcion-varianza-autovalores]
+
+tibble(
+  componente = paste0("Dim", 1:p),
+  autovalor  = eS$values,
+  proporcion = round(eS$values / sum(eS$values), 4)
+)
 
 
 ## Estandarización multivariante -------------------------------------------
@@ -255,6 +308,16 @@ YM  <- Xc %*% U %*% D1_2 %*% t(U)                          # estandarización mu
 
 round(colMeans(YM), 2)  # medias ~ 0
 round(var(YM), 2)       # matriz de covarianzas ~ identidad
+
+
+# [verificacion-mahalanobis-estandarizacion]
+
+dist_euclidea_YM   <- sqrt(rowSums(YM^2))
+dist_mahalanobis_X <- sqrt(mahalanobis(Datos, colMeans(Datos), S))
+
+chequeo_maha_estandar <- isTRUE(all.equal(dist_euclidea_YM, dist_mahalanobis_X, check.attributes = FALSE))
+stopifnot(chequeo_maha_estandar)
+chequeo_maha_estandar
 
 
 # Distancias multivariadas -------------------------------------------------
@@ -482,6 +545,26 @@ tibble(
 # [psych-mardia]
 
 mardia(Datos, plot = FALSE)
+
+
+# [shapiro-univariado]
+
+shapiro_univariado <- Datos |>
+  summarise(across(everything(), ~ shapiro.test(.x)$p.value)) |>
+  pivot_longer(everything(), names_to = "variable", values_to = "p_valor") |>
+  mutate(p_valor_bonferroni = pmin(p_valor * p, 1))
+
+shapiro_univariado
+
+
+# [verificacion-shapiro-bonferroni]
+
+chequeo_bonferroni <- isTRUE(all.equal(
+  shapiro_univariado$p_valor_bonferroni,
+  pmin(shapiro_univariado$p_valor * p, 1)
+))
+stopifnot(chequeo_bonferroni)
+chequeo_bonferroni
 
 
 # Inferencia multivariada --------------------------------------------------
