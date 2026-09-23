@@ -128,9 +128,9 @@ Q_elemento <- outer(1:n_ciudades, 1:n_ciudades,
                      Vectorize(\(i, j) -0.5 * (D2[i, j] - d2_fila[i] - d2_col[j] + d2_gral)))
 dimnames(Q_elemento) <- dimnames(Q)
 
-chequeo_Q <- isTRUE(all.equal(Q, Q_elemento))
-stopifnot(chequeo_Q)
-chequeo_Q
+stopifnot(isTRUE(all.equal(Q, Q_elemento)))
+
+round(Q_elemento, 1)
 
 
 # [mds-Y-manual]
@@ -145,11 +145,12 @@ round(Y_manual, 1)
 
 # [mds-verificacion-cmdscale]
 
-chequeo_cmdscale <- isTRUE(all.equal(abs(as.numeric(Y_manual)),
-                                      abs(as.numeric(mds_ciudades)),
-                                      tolerance = 1e-6))
-stopifnot(chequeo_cmdscale)
-chequeo_cmdscale
+stopifnot(isTRUE(all.equal(abs(as.numeric(Y_manual)),
+                            abs(as.numeric(mds_ciudades)),
+                            tolerance = 1e-6)))
+
+round(abs(Y_manual), 1)
+round(abs(mds_ciudades), 1)
 
 
 # [mds-verificacion-acp-epf]
@@ -157,11 +158,12 @@ chequeo_cmdscale
 mds_epf <- cmdscale(dist(scale(epf)), k = 2)
 pca_epf <- prcomp(scale(epf))
 
-chequeo_mds_acp <- isTRUE(all.equal(abs(as.numeric(mds_epf)),
-                                     abs(as.numeric(pca_epf$x[, 1:2])),
-                                     tolerance = 1e-6))
-stopifnot(chequeo_mds_acp)
-chequeo_mds_acp
+stopifnot(isTRUE(all.equal(abs(as.numeric(mds_epf)),
+                            abs(as.numeric(pca_epf$x[, 1:2])),
+                            tolerance = 1e-6)))
+
+round(abs(mds_epf), 2)
+round(abs(pca_epf$x[, 1:2]), 2)
 
 
 ## Compatibilidad con la métrica euclídea ----------------------------------
@@ -324,19 +326,19 @@ round(Cf_manual, 3)
 
 res_ca <- CA(tabla_ca, graph = FALSE)
 
-chequeo_ca <- isTRUE(all.equal(abs(as.numeric(Cf_manual)), abs(as.numeric(res_ca$row$coord)),
-                                tolerance = 1e-6))
-stopifnot(chequeo_ca)
-chequeo_ca
+stopifnot(isTRUE(all.equal(abs(as.numeric(Cf_manual)), abs(as.numeric(res_ca$row$coord)),
+                            tolerance = 1e-6)))
+
+round(res_ca$row$coord, 3)
 
 
 # [ca-verificacion-paquete-ca]
 
 res_ca_pkg <- ca(tabla_ca)
 
-chequeo_ca_pkg <- isTRUE(all.equal(res_ca_pkg$sv, sqrt(lambda_ca), tolerance = 1e-6))
-stopifnot(chequeo_ca_pkg)
-chequeo_ca_pkg
+stopifnot(isTRUE(all.equal(res_ca_pkg$sv, sqrt(lambda_ca), tolerance = 1e-6)))
+
+c(valores_singulares_ca = res_ca_pkg$sv, raiz_autovalores_Z = sqrt(lambda_ca))
 
 
 ## Relación entre chi-cuadrado e inercia total -----------------------------
@@ -346,8 +348,7 @@ chequeo_ca_pkg
 chi2 <- chisq.test(tabla_ca)$statistic
 inercia_total <- sum(eZ$values[-1])
 
-chequeo_chi2 <- isTRUE(all.equal(as.numeric(chi2) / n_ca, inercia_total, tolerance = 1e-6))
-stopifnot(chequeo_chi2)
+stopifnot(isTRUE(all.equal(as.numeric(chi2) / n_ca, inercia_total, tolerance = 1e-6)))
 
 c(chi2 = as.numeric(chi2), inercia_total_x_n = inercia_total * n_ca)
 
@@ -424,10 +425,10 @@ fviz_mca_var(res_mca, repel = TRUE) +
 Cc_ca <- res_ca$col$coord
 Cf_desde_columnas <- sweep(Df_inv %*% F_mat %*% Cc_ca, 2, sqrt(lambda_ca), "/")
 
-chequeo_transicion <- isTRUE(all.equal(as.matrix(Cf_desde_columnas), as.matrix(res_ca$row$coord),
-                                        check.attributes = FALSE, tolerance = 1e-6))
-stopifnot(chequeo_transicion)
-chequeo_transicion
+stopifnot(isTRUE(all.equal(as.matrix(Cf_desde_columnas), as.matrix(res_ca$row$coord),
+                            check.attributes = FALSE, tolerance = 1e-6)))
+
+round(Cf_desde_columnas, 3)
 
 
 # Análisis Factorial Exploratorio ------------------------------------------
@@ -457,10 +458,10 @@ tibble(variable = names(epf), comunalidad, especifica, suma = comunalidad + espe
 # factanal() estima Lambda y Psi por optimización numérica (Newton-Raphson),
 # no por una fórmula cerrada, así que la igualdad se cumple solo hasta la
 # tolerancia de convergencia del algoritmo, no de forma exacta.
-chequeo_comunalidad <- isTRUE(all.equal(as.numeric(comunalidad + especifica),
-                                         rep(1, ncol(epf)), tolerance = 1e-4))
-stopifnot(chequeo_comunalidad)
-chequeo_comunalidad
+stopifnot(isTRUE(all.equal(as.numeric(comunalidad + especifica),
+                            rep(1, ncol(epf)), tolerance = 1e-4)))
+
+max(abs(comunalidad + especifica - 1))   # mayor desvío respecto de 1, dentro de la tolerancia numérica
 
 
 ## Métodos de estimación ---------------------------------------------------
@@ -520,10 +521,12 @@ round(fa_varimax$loadings[, 1:2], 3)
 com_varimax   <- rowSums(fa_varimax$loadings[, ]^2)
 com_quartimax <- rowSums(fa_quartimax$loadings[, ]^2)
 
-chequeo_rotacion <- isTRUE(all.equal(comunalidad, com_varimax, tolerance = 1e-6)) &&
+stopifnot(
+  isTRUE(all.equal(comunalidad, com_varimax, tolerance = 1e-6)),
   isTRUE(all.equal(comunalidad, com_quartimax, tolerance = 1e-6))
-stopifnot(chequeo_rotacion)
-chequeo_rotacion
+)
+
+tibble(variable = names(epf), sin_rotar = comunalidad, varimax = com_varimax, quartimax = com_quartimax)
 
 
 ## Puntuaciones factoriales ------------------------------------------------

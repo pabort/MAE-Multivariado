@@ -141,9 +141,9 @@ D <- diag(1 / sqrt(diag(S)))
 R_reconstruida <- D %*% S %*% D
 dimnames(R_reconstruida) <- dimnames(S)
 
-R_reconstruida
+stopifnot(isTRUE(all.equal(unname(R), unname(R_reconstruida))))
 
-all.equal(unname(R), unname(R_reconstruida))
+R_reconstruida
 
 
 ## Medidas de variabilidad multivariada ------------------------------------
@@ -231,7 +231,9 @@ Rp_desde_R <- -(diag(diag(Rinv)^(-1 / 2)) %*% Rinv %*% diag(diag(Rinv)^(-1 / 2))
 diag(Rp_desde_R) <- 1
 dimnames(Rp_desde_R) <- dimnames(R)
 
-all.equal(Rp, Rp_desde_R)
+stopifnot(isTRUE(all.equal(Rp, Rp_desde_R)))
+
+round(Rp_desde_R, 4)
 
 
 # [condicionamiento]
@@ -253,23 +255,24 @@ Lambda <- diag(eS$values)
 
 S_reconstruida <- eS$vectors %*% Lambda %*% t(eS$vectors)
 
-chequeo_reconstruccion <- isTRUE(all.equal(S, S_reconstruida, check.attributes = FALSE))
-stopifnot(chequeo_reconstruccion)
-chequeo_reconstruccion
+stopifnot(isTRUE(all.equal(S, S_reconstruida, check.attributes = FALSE)))
+
+round(S_reconstruida, 3)
 
 
 # [verificacion-ortogonalidad]
 
-chequeo_ortogonal <- isTRUE(all.equal(eS$vectors %*% t(eS$vectors), diag(p), check.attributes = FALSE))
-stopifnot(chequeo_ortogonal)
-chequeo_ortogonal
+stopifnot(isTRUE(all.equal(eS$vectors %*% t(eS$vectors), diag(p), check.attributes = FALSE)))
+
+round(eS$vectors %*% t(eS$vectors), 4)
 
 
 # [traza-det-desde-autovalores]
 
-chequeo_traza <- isTRUE(all.equal(sum(diag(S)), sum(eS$values)))
-chequeo_det   <- isTRUE(all.equal(det(S), prod(eS$values)))
-stopifnot(chequeo_traza, chequeo_det)
+stopifnot(
+  isTRUE(all.equal(sum(diag(S)), sum(eS$values))),
+  isTRUE(all.equal(det(S), prod(eS$values)))
+)
 
 tibble(
   cantidad          = c("Traza", "Determinante"),
@@ -282,9 +285,9 @@ tibble(
 
 suma_rango1 <- Reduce(`+`, lapply(1:p, \(k) eS$values[k] * outer(eS$vectors[, k], eS$vectors[, k])))
 
-chequeo_rango1 <- isTRUE(all.equal(S, suma_rango1, check.attributes = FALSE))
-stopifnot(chequeo_rango1)
-chequeo_rango1
+stopifnot(isTRUE(all.equal(S, suma_rango1, check.attributes = FALSE)))
+
+round(suma_rango1, 3)
 
 
 # [proporcion-varianza-autovalores]
@@ -315,9 +318,9 @@ round(var(YM), 2)       # matriz de covarianzas ~ identidad
 dist_euclidea_YM   <- sqrt(rowSums(YM^2))
 dist_mahalanobis_X <- sqrt(mahalanobis(Datos, colMeans(Datos), S))
 
-chequeo_maha_estandar <- isTRUE(all.equal(dist_euclidea_YM, dist_mahalanobis_X, check.attributes = FALSE))
-stopifnot(chequeo_maha_estandar)
-chequeo_maha_estandar
+stopifnot(isTRUE(all.equal(dist_euclidea_YM, dist_mahalanobis_X, check.attributes = FALSE)))
+
+max(abs(dist_euclidea_YM - dist_mahalanobis_X))
 
 
 # Distancias multivariadas -------------------------------------------------
@@ -559,12 +562,14 @@ shapiro_univariado
 
 # [verificacion-shapiro-bonferroni]
 
-chequeo_bonferroni <- isTRUE(all.equal(
+stopifnot(isTRUE(all.equal(
   shapiro_univariado$p_valor_bonferroni,
   pmin(shapiro_univariado$p_valor * p, 1)
-))
-stopifnot(chequeo_bonferroni)
-chequeo_bonferroni
+)))
+
+shapiro_univariado |>
+  mutate(recalculado = pmin(p_valor * p, 1)) |>
+  select(variable, p_valor_bonferroni, recalculado)
 
 
 # Inferencia multivariada --------------------------------------------------

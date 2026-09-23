@@ -72,9 +72,10 @@ list(T = T_mat, W = W_mat, B = B_mat)
 
 # [empresas-verificacion]
 
-chequeo_twb <- isTRUE(all.equal(T_mat, W_mat + B_mat))
-stopifnot(chequeo_twb)
-chequeo_twb
+stopifnot(isTRUE(all.equal(T_mat, W_mat + B_mat)))
+
+round(T_mat, 2)
+round(W_mat + B_mat, 2)
 
 
 # [empresas-sp]
@@ -133,11 +134,49 @@ s_jj <- diag(var(USArrests))
 sub_pearson <- sweep(sub_arrests, 2, sqrt(s_jj), FUN = "/")
 dist(sub_pearson, method = "euclidean")
 
-# Mahalanobis: tampoco está en dist(), se arma con la inversa de la covarianza
-S     <- cov(USArrests)
-Sinv  <- solve(S)
-maha  <- function(r, s) sqrt(t(r - s) %*% Sinv %*% (r - s))
-combn(1:4, 2, \(idx) maha(as.numeric(sub_arrests[idx[1], ]), as.numeric(sub_arrests[idx[2], ])))
+# Mahalanobis: tampoco está en dist(), pero S^-1 = L'L (descomposición de Cholesky),
+# así que es la distancia euclídea de siempre sobre los datos transformados por L
+S    <- cov(USArrests)
+L    <- chol(solve(S))
+d_maha <- dist(as.matrix(sub_arrests) %*% t(L))
+round(as.matrix(d_maha), 3)
+
+
+# [verificacion-mahalanobis]
+
+Sinv <- solve(S)
+maha_forma_cuadratica <- function(r, s) sqrt(t(r - s) %*% Sinv %*% (r - s))
+
+pares <- combn(1:4, 2)
+maha_manual <- apply(pares, 2, \(idx) {
+  maha_forma_cuadratica(as.numeric(sub_arrests[idx[1], ]), as.numeric(sub_arrests[idx[2], ]))
+})
+maha_cholesky <- as.matrix(d_maha)[t(pares)]
+
+stopifnot(isTRUE(all.equal(as.numeric(maha_manual), as.numeric(maha_cholesky))))
+
+round(maha_manual, 3)
+round(maha_cholesky, 3)
+
+
+# [dist-almacenamiento]
+
+d_empresas <- dist(empresas)
+d_empresas
+
+
+# [dist-as-matrix]
+
+round(as.matrix(d_empresas), 1)
+
+
+# [dist-par-mas-cercano]
+
+m_empresas <- as.matrix(d_empresas)
+diag(m_empresas) <- Inf
+
+idx_min <- which(m_empresas == min(m_empresas), arr.ind = TRUE)[1, ]
+rownames(m_empresas)[idx_min]
 
 
 # [verificacion-canberra]
@@ -148,9 +187,9 @@ s <- as.numeric(sub_arrests[2, ])
 canberra_manual <- sum(abs(r - s) / (abs(r) + abs(s)))
 canberra_dist    <- as.matrix(dist(sub_arrests, method = "canberra"))[1, 2]
 
-chequeo_canberra <- isTRUE(all.equal(canberra_manual, canberra_dist))
-stopifnot(chequeo_canberra)
-chequeo_canberra
+stopifnot(isTRUE(all.equal(canberra_manual, canberra_dist)))
+
+c(manual = canberra_manual, dist = canberra_dist)
 
 
 ## Variables dicotómicas ---------------------------------------------------
@@ -185,9 +224,10 @@ sim <- outer(1:n, 1:n, Vectorize(\(i, j) jaccard_similaridad(m[i, ], m[j, ])))
 dist_manual <- as.dist(1 - sim)
 dist_R      <- dist(bin_penguins, method = "binary")
 
-chequeo_jaccard <- isTRUE(all.equal(as.numeric(dist_manual), as.numeric(dist_R)))
-stopifnot(chequeo_jaccard)
-chequeo_jaccard
+stopifnot(isTRUE(all.equal(as.numeric(dist_manual), as.numeric(dist_R))))
+
+round(as.matrix(dist_manual), 2)
+round(as.matrix(dist_R), 2)
 
 
 # [sokal-sorensen]
@@ -216,9 +256,9 @@ round(sim_sorensen, 2)
 
 # [verificacion-sokal-michener]
 
-chequeo_sm_jaccard <- isTRUE(all.equal(sim_sokal_michener, sim_jaccard))
-stopifnot(chequeo_sm_jaccard)
-chequeo_sm_jaccard
+stopifnot(isTRUE(all.equal(sim_sokal_michener, sim_jaccard)))
+
+round(sim_jaccard, 2)
 
 
 # [transformacion-similaridad-distancia]
@@ -292,8 +332,10 @@ fviz_dend(hc_centroide, main = "Método del centroide — 8 empresas")
 # [verificacion-centroide]
 
 # Paso 1: fusiona las observaciones -3 y -4 (E3, E4), a distancia 13
-chequeo_paso1 <- identical(hc_centroide$merge[1, ], c(-3L, -4L)) &&
+stopifnot(
+  identical(hc_centroide$merge[1, ], c(-3L, -4L)),
   isTRUE(all.equal(hc_centroide$height[1], 13))
+)
 
 # Paso 5: fusiona el grupo del paso 1 (E34) con el grupo del paso 3 (E12) --
 # hclust() codifica esa referencia como merge = c(1, 3). La distancia en ese
@@ -302,11 +344,13 @@ chequeo_paso1 <- identical(hc_centroide$merge[1, ], c(-3L, -4L)) &&
 centroide_e12 <- colMeans(empresas[c("E1", "E2"), ])
 d2_e34_e12    <- sum((centroide_e34 - centroide_e12)^2)
 
-chequeo_paso5 <- identical(hc_centroide$merge[5, ], c(1L, 3L)) &&
+stopifnot(
+  identical(hc_centroide$merge[5, ], c(1L, 3L)),
   isTRUE(all.equal(d2_e34_e12, hc_centroide$height[5]))
+)
 
-stopifnot(chequeo_paso1, chequeo_paso5)
-c(paso1 = chequeo_paso1, paso5 = chequeo_paso5)
+c(paso1_merge = hc_centroide$merge[1, ], paso1_height = hc_centroide$height[1])
+c(paso5_distancia_recalculada = d2_e34_e12, paso5_height = hc_centroide$height[5])
 
 
 ## Métodos de enlace -------------------------------------------------------
@@ -327,9 +371,9 @@ I_formula <- (2 * 2 * 2 / (2 + 2)) * sum((centroide_e12 - centroide_e34)^2)
 
 hc_ward <- hclust(d2_empresas, method = "ward.D")
 
-chequeo_ward <- isTRUE(all.equal(I_formula, hc_ward$height[5]))
-stopifnot(chequeo_ward)
-c(I_formula = I_formula, chequeo = chequeo_ward)
+stopifnot(isTRUE(all.equal(I_formula, hc_ward$height[5])))
+
+c(I_formula = I_formula, height_hclust = hc_ward$height[5])
 
 
 # [arrests-dendrogramas]
@@ -504,6 +548,33 @@ sil4_df <- as_tibble(sil4[, 1:3], rownames = "estado") |>
   arrange(sil_width)
 
 sil4_df |> filter(sil_width < 0)
+
+
+# [silueta-negativos-conclusion]
+#| output: asis
+
+estados_negativos <- sil4_df |> filter(sil_width < 0) |> pull(estado)
+
+lista_estados <- glue::glue_collapse(glue::glue("**{estados_negativos}**"), sep = ", ", last = " y ")
+verbo <- if (length(estados_negativos) == 1) "queda" else "quedan"
+
+if (length(estados_negativos) > 0) {
+  cat(glue::glue(
+    "Casi todas las siluetas son positivas, pero unos pocos estados quedan con ",
+    "$s_i$ cercano a cero o negativo: son los que están en el borde entre dos ",
+    "grupos, más parecidos al grupo vecino que al propio. En esta partición ",
+    "{lista_estados} {verbo} con $s_i<0$: `hclust()` los asigna a un grupo, pero ",
+    "su distancia al grupo vecino es, en promedio, menor que la distancia dentro ",
+    "del propio grupo. No es un error del algoritmo —cada observación tiene que ",
+    "ir a algún grupo— sino una señal de que, para esos estados en particular, ",
+    "la frontera entre grupos no está bien definida."
+  ))
+} else {
+  cat(glue::glue(
+    "En esta partición todas las siluetas son positivas: no hay estados en el ",
+    "borde entre dos grupos, más parecidos al grupo vecino que al propio."
+  ))
+}
 
 
 # Descripción de los grupos ------------------------------------------------

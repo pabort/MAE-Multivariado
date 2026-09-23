@@ -118,17 +118,20 @@ resultados
 
 # [geometria-verificacion-constante]
 
-chequeo_constante <- isTRUE(all.equal(resultados$suma_total, rep(C, nrow(resultados))))
-stopifnot(chequeo_constante)
-chequeo_constante
+stopifnot(isTRUE(all.equal(resultados$suma_total, rep(C, nrow(resultados)))))
+
+range(resultados$suma_total)   # mínimo y máximo coinciden: es constante en las 5 direcciones
 
 
 # [geometria-verificacion-optimo]
 
-chequeo_maximo <- resultados$direccion[which.max(resultados$suma_y2)] == "primer_autovector"
-chequeo_minimo <- resultados$direccion[which.min(resultados$suma_r2)] == "primer_autovector"
-stopifnot(chequeo_maximo, chequeo_minimo)
-c(maximiza_varianza = chequeo_maximo, minimiza_residuos = chequeo_minimo)
+stopifnot(
+  resultados$direccion[which.max(resultados$suma_y2)] == "primer_autovector",
+  resultados$direccion[which.min(resultados$suma_r2)] == "primer_autovector"
+)
+
+c(direccion_maxima_varianza = resultados$direccion[which.max(resultados$suma_y2)],
+  direccion_minimo_residuo  = resultados$direccion[which.min(resultados$suma_r2)])
 
 
 # [geometria-varianza-lambda1]
@@ -136,8 +139,8 @@ c(maximiza_varianza = chequeo_maximo, minimiza_residuos = chequeo_minimo)
 u1 <- eigen(cor(indice8))$vectors[, 1]
 y1 <- as.numeric(Xstd %*% u1)
 
-chequeo_lambda1 <- isTRUE(all.equal(var(y1), eigen(cor(indice8))$values[1]))
-stopifnot(chequeo_lambda1)
+stopifnot(isTRUE(all.equal(var(y1), eigen(cor(indice8))$values[1])))
+
 c(var_y1 = var(y1), lambda1 = eigen(cor(indice8))$values[1])
 
 
