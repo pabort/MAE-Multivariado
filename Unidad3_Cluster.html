@@ -3692,7 +3692,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Fecha de publicación</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">22 de septiembre de 2026</p>
+      <p class="date">23 de septiembre de 2026</p>
     </div>
   </div>
   
@@ -3706,7 +3706,7 @@ window.Quarto = {
 
 <section id="introducción" class="level1" data-number="1">
 <h1 data-number="1"><span class="header-section-number">1</span> Introducción</h1>
-<p>El <strong>análisis de conglomerados</strong> (o <em>clustering</em>) busca identificar grupos relativamente homogéneos de observaciones a partir de un conjunto de variables: que cada grupo sea internamente homogéneo y heterogéneo respecto de los demás. A diferencia de los métodos de clasificación supervisada, acá no hay una variable de grupo conocida de antemano —de ahí que también se lo llame <em>clasificación no supervisada</em>.</p>
+<p>El <strong>análisis de conglomerados</strong> (o <em>clustering</em>) busca identificar grupos relativamente homogéneos de observaciones a partir de un conjunto de variables: que cada grupo sea internamente homogéneo y heterogéneo respecto de los demás. A diferencia de los métodos de clasificación supervisada, acá no hay una variable de grupo conocida de antemano (por eso, también se lo llama <em>clasificación no supervisada</em>).</p>
 <section id="los-conjuntos-de-datos" class="level2" data-number="1.1">
 <h2 data-number="1.1" class="anchored" data-anchor-id="los-conjuntos-de-datos"><span class="header-section-number">1.1</span> Los conjuntos de datos</h2>
 <p>Trabajamos principalmente con <code>USArrests</code>, un conjunto que viene incluido en R base: 50 estados de Estados Unidos, con datos de 1973 (<em>World Almanac</em>), cuatro variables:</p>
@@ -3736,8 +3736,8 @@ window.Quarto = {
 </tr>
 </tbody>
 </table>
-<p>Los nombres de los estados quedan como nombres de fila, lo que va a ser útil más adelante para leer los dendrogramas. Además, las escalas de las variables son muy distintas: <code>Assault</code> toma valores de dos órdenes de magnitud mayores que <code>Murder</code>. Esto no es un detalle menor: va a ser el eje de la sección sobre estandarización.</p>
-<p>Más adelante usamos también <code>penguins</code> (el de la Unidad 1) para dos cosas que <code>USArrests</code> no permite: comparar los conglomerados encontrados contra grupos verdaderamente conocidos (las especies), y trabajar con variables categóricas.</p>
+<p>Los nombres de los estados quedan como nombres de fila, lo que va resultar útil más adelante para leer algunas visualizaciones. Por otro lado, las escalas de las variables son muy distintas: <code>Assault</code> toma valores de dos órdenes de magnitud mayores que <code>Murder</code>. Esto no es un detalle menor: va a ser el eje de la sección sobre estandarización.</p>
+<p>Adicionalmente, se itulizará también <code>penguins</code> (el de la Unidad 1) para dos cosas que <code>USArrests</code> no permite: comparar los conglomerados encontrados contra grupos verdaderamente conocidos (las especies), y trabajar con variables categóricas.</p>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -3750,7 +3750,7 @@ window.Quarto = {
 <div class="callout-body-container callout-body">
 <p>Todo el código de este documento está disponible como script de R en el repositorio de la materia:</p>
 <ul>
-<li><a href="https://raw.githubusercontent.com/pabort/MAE-Multivariado/main/Unidad3_Cluster.R">Descargar <code>Unidad3_Cluster.R</code></a> — clic derecho → “Guardar enlace como…”</li>
+<li><a href="https://raw.githubusercontent.com/pabort/MAE-Multivariado/main/Unidad3_Cluster.R">Descargar <code>Unidad3_Cluster.R</code></a> (clic derecho → “Guardar enlace como…”)</li>
 <li><a href="https://github.com/pabort/MAE-Multivariado">Ver el repositorio completo</a></li>
 </ul>
 <p>El script está organizado en las mismas secciones que este documento, así que se puede navegar desde el índice de RStudio (Ctrl+Shift+O).</p>
@@ -3812,7 +3812,7 @@ window.Quarto = {
 <p>donde <span class="math inline">\(\textbf{W}_g = \sum_{i=1}^{n_g}(\textbf{x}_{ig}-\bar{\textbf{x}}_g)(\textbf{x}_{ig}-\bar{\textbf{x}}_g)&#39;\)</span>. La estimación combinada (<em>pooled</em>) de la matriz de covarianzas intra-grupos es <span class="math inline">\(\textbf{S}_p = \textbf{W}/(n-G)\)</span>.</p>
 <section id="un-ejemplo-con-dos-grupos-conocidos" class="level2" data-number="3.1">
 <h2 data-number="3.1" class="anchored" data-anchor-id="un-ejemplo-con-dos-grupos-conocidos"><span class="header-section-number">3.1</span> Un ejemplo con dos grupos conocidos</h2>
-<p>Para ver la descomposición en acción, conviene un ejemplo donde los grupos ya estén dados. La teórica usa 8 empresas hipotéticas con dos variables —inversión publicitaria y ventas (Aldás y Uriel, 2017)— divididas en dos grupos intuitivos: <span class="math inline">\(G_1=\{E1,E2,E3,E4\}\)</span> y <span class="math inline">\(G_2=\{E5,E6,E7,E8\}\)</span>. Este mismo ejemplo se retoma en la sección de agrupamiento jerárquico.</p>
+<p>Para ver la descomposición en acción, conviene un ejemplo donde los grupos ya estén dados. Supongamos 8 empresas hipotéticas con dos variables: inversión publicitaria y ventas (Aldás y Uriel, 2017), divididas en dos grupos intuitivos: <span class="math inline">\(G_1=\{E1,E2,E3,E4\}\)</span> y <span class="math inline">\(G_2=\{E5,E6,E7,E8\}\)</span>. Este mismo ejemplo se retoma en la sección de agrupamiento jerárquico.</p>
 <div class="cell">
 <details class="code-fold">
 <summary>Mostrar código</summary>
@@ -3911,7 +3911,7 @@ ventas    -3.666667 56.916667</code></pre>
 </section>
 <section id="medidas-de-proximidad" class="level1" data-number="4">
 <h1 data-number="4"><span class="header-section-number">4</span> Medidas de proximidad</h1>
-<p>Toda técnica de agrupamiento necesita una noción de qué tan parecidas o distintas son dos observaciones. Esta sección recorre las medidas más usuales —tema central de la teórica— y muestra cómo se calculan en R.</p>
+<p>Toda técnica de agrupamiento necesita una noción de qué tan parecidas o distintas son dos observaciones. Esta sección recorre las medidas más usuales y muestra cómo se calculan en R.</p>
 <p>Sean <span class="math inline">\(r\)</span> y <span class="math inline">\(s\)</span> dos observaciones cualesquiera (de las <span class="math inline">\(n\)</span> posibles), y <span class="math inline">\(x_{rj}\)</span>, <span class="math inline">\(x_{sj}\)</span> los valores que toman en la variable <span class="math inline">\(x_j\)</span> (<span class="math inline">\(j=1,\dots,p\)</span>).</p>
 <section id="variables-métricas" class="level2" data-number="4.1">
 <h2 data-number="4.1" class="anchored" data-anchor-id="variables-métricas"><span class="header-section-number">4.1</span> Variables métricas</h2>
@@ -4051,7 +4051,7 @@ Arkansas   1.418  3.506   2.700    0.000</code></pre>
 </div>
 </div>
 <p>Es la misma idea que la estandarización multivariante de la Unidad 1: esferizar los datos (llevar la covarianza a la identidad) y medir después la distancia euclídea de siempre. Ahí se usaba la raíz cuadrada simétrica <span class="math inline">\(S^{-1/2}=U\Lambda^{-1/2}U&#39;\)</span>, obtenida por descomposición espectral; acá alcanza con cualquier matriz <span class="math inline">\(L\)</span> que cumpla <span class="math inline">\(S^{-1}=L&#39;L\)</span>, y la descomposición de Cholesky da una directamente, sin pasar por autovalores.</p>
-<p>Vale aclarar la diferencia con <code>stats::mahalanobis()</code>: esa función calcula la distancia de cada observación a un punto fijo —típicamente la media—, no la distancia entre pares de observaciones. Es la que se usa en la Unidad 1 para detectar observaciones atípicas multivariadas.</p>
+<p>Vale aclarar la diferencia con <code>stats::mahalanobis()</code>: esa función calcula la distancia de cada observación a un punto fijo (típicamente la media), no la distancia entre pares de observaciones. Es la que se usa en la Unidad 1 para detectar observaciones atípicas multivariadas.</p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -4360,7 +4360,7 @@ E8 38.0 40.2 40.3 38.1 17.7 12.0  5.4  0.0</code></pre>
 [6,] 0.67 1.00 1.00 1.00 0.67 1.00</code></pre>
 </div>
 </div>
-<p>En este ejemplo las seis observaciones comparten <code>es_torgersen = 1</code>, así que ningún par tiene coincidencias en la ausencia (<span class="math inline">\(d=0\)</span> siempre) — es la única diferencia entre Jaccard y Sokal y Michener, así que acá coinciden exactamente:</p>
+<p>En este ejemplo las seis observaciones comparten <code>es_torgersen = 1</code>, así que ningún par tiene coincidencias en la ausencia (<span class="math inline">\(d=0\)</span> siempre), la única diferencia entre Jaccard y Sokal y Michener, así que acá coinciden exactamente:</p>
 <div class="cell">
 <details class="code-fold">
 <summary>Mostrar código</summary>
@@ -4379,7 +4379,7 @@ E8 38.0 40.2 40.3 38.1 17.7 12.0  5.4  0.0</code></pre>
 </div>
 </div>
 <p>Sorensen, en cambio, da valores sistemáticamente más altos que los otros dos: pondera el numerador con un factor 2 sobre las coincidencias de presencia, lo que lo hace, por construcción, siempre mayor o igual que Jaccard.</p>
-<p>Cualquier similaridad <span class="math inline">\(c(r,s)\)</span> —no solo Jaccard— puede transformarse en una distancia al cuadrado con:</p>
+<p>Cualquier similaridad <span class="math inline">\(c(r,s)\)</span> (no solo Jaccard) puede transformarse en una distancia al cuadrado con:</p>
 <p><span class="math display">\[d^2_{(r,s)} = c(r,r) + c(s,s) - 2c(r,s)\]</span></p>
 <p>que en notación matricial es <span class="math inline">\(\textbf{D}^2 = 2(\mathbf{1}\mathbf{1}&#39; - \textbf{S})\)</span>, con <span class="math inline">\(\textbf{S}\)</span> la matriz de similaridades. Como toda similaridad cumple <span class="math inline">\(c(r,r)=c(s,s)=1\)</span>, la fórmula se simplifica a <span class="math inline">\(d^2_{(r,s)} = 2(1-c(r,s))\)</span>:</p>
 <div class="cell">
@@ -4400,7 +4400,7 @@ E8 38.0 40.2 40.3 38.1 17.7 12.0  5.4  0.0</code></pre>
 </section>
 <section id="distancia-de-gower-para-datos-mixtos" class="level2" data-number="4.3">
 <h2 data-number="4.3" class="anchored" data-anchor-id="distancia-de-gower-para-datos-mixtos"><span class="header-section-number">4.3</span> Distancia de Gower para datos mixtos</h2>
-<p>Cuando hay variables cuantitativas y categóricas a la vez —como en <code>penguins</code>, con dos numéricas y dos categóricas— ninguna de las distancias anteriores sirve por sí sola. La distancia de Gower combina, para cada variable, una contribución adecuada a su tipo (diferencia normalizada por el rango para las cuantitativas, coincidencia simple para las categóricas) y promedia:</p>
+<p>Cuando hay variables cuantitativas y categóricas a la vez (como en <code>penguins</code>, con dos numéricas y dos categóricas), ninguna de las distancias anteriores sirve por sí sola. La distancia de Gower combina, para cada variable, una contribución adecuada a su tipo (diferencia normalizada por el rango para las cuantitativas, coincidencia simple para las categóricas) y promedia:</p>
 <p><span class="math display">\[d_{rs}^2 = 1 - s_{rs}, \qquad s_{rs} = \frac{\sum_{j=1}^{p_1}\left(1-\frac{|x_{rj}-x_{sj}|}{\text{recorrido}(x_j)}\right) + a + \alpha}{p_1+(p_2-d)+p_3}\]</span></p>
 <div class="cell">
 <details class="code-fold">
@@ -4465,10 +4465,10 @@ Number of objects : 6</code></pre>
 </section>
 <section id="agrupamiento-jerárquico" class="level1" data-number="5">
 <h1 data-number="5"><span class="header-section-number">5</span> Agrupamiento jerárquico</h1>
-<p>Los métodos jerárquicos construyen una secuencia de particiones <span class="math inline">\(C_0, \dots, C_m\)</span>, con <span class="math inline">\(C_0\)</span> formada por <span class="math inline">\(n\)</span> grupos (cada observación es su propio grupo) y <span class="math inline">\(C_m\)</span> por uno solo (todas las observaciones juntas). En cada paso se fusionan los dos grupos más próximos, según algún criterio de distancia entre grupos —el que distingue a los distintos métodos de enlace.</p>
+<p>Los métodos jerárquicos construyen una secuencia de particiones <span class="math inline">\(C_0, \dots, C_m\)</span>, con <span class="math inline">\(C_0\)</span> formada por <span class="math inline">\(n\)</span> grupos (cada observación es su propio grupo) y <span class="math inline">\(C_m\)</span> por uno solo (todas las observaciones juntas). En cada paso se fusionan los dos grupos más próximos, según algún criterio de distancia entre grupos: el que distingue a los distintos métodos de enlace.</p>
 <section id="paso-a-paso-el-método-del-centroide" class="level2" data-number="5.1">
 <h2 data-number="5.1" class="anchored" data-anchor-id="paso-a-paso-el-método-del-centroide"><span class="header-section-number">5.1</span> Paso a paso: el método del centroide</h2>
-<p>Antes de usar <code>hclust()</code> conviene reproducir a mano el ejemplo de la teórica, para ver qué hace el algoritmo en cada paso. Son las mismas 8 empresas de la sección anterior, ahora sin conocer los grupos de antemano.</p>
+<p>Antes de usar <code>hclust()</code> conviene reproducir a mano el método, para ver qué hace el algoritmo en cada paso. Son las mismas 8 empresas de la sección anterior, ahora sin conocer los grupos de antemano.</p>
 <p><strong>Paso 1.</strong> Se parte de la matriz de distancias euclídeas al cuadrado entre las 8 empresas:</p>
 <div class="cell">
 <details class="code-fold">
@@ -4650,7 +4650,7 @@ E8 1445 1613 1625 1448  314  144   29    0</code></pre>
 </div>
 <div id="callout-7" class="callout-7-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>El método de Ward, tal como lo escribe R e Infostat, usa el incremento <span class="math inline">\(I_{g_1,g_2}=\frac{2n_1n_2}{n_1+n_2}\|\bar{\textbf{x}}_{g_1}-\bar{\textbf{x}}_{g_2}\|^2\)</span> (el doble de la fórmula “clásica”), y espera que se le pase la matriz de distancias <strong>ya elevada al cuadrado</strong> (<code>ward.D</code>). Se verifica reproduciendo el primer incremento de la teórica, <span class="math inline">\(I_{(12),(34)}=282{,}5\)</span>:</p>
+<p>El método de Ward, tal como lo escribe R e Infostat, usa el incremento <span class="math inline">\(I_{g_1,g_2}=\frac{2n_1n_2}{n_1+n_2}\|\bar{\textbf{x}}_{g_1}-\bar{\textbf{x}}_{g_2}\|^2\)</span> (el doble de la fórmula “clásica”), y espera que se le pase la matriz de distancias <strong>ya elevada al cuadrado</strong> (<code>ward.D</code>). Se verifica reproduciendo el primer incremento, <span class="math inline">\(I_{(12),(34)}=282{,}5\)</span>:</p>
 <div class="cell">
 <details class="code-fold">
 <summary>Mostrar código</summary>
@@ -4724,7 +4724,7 @@ E8 1445 1613 1625 1448  314  144   29    0</code></pre>
 </section>
 <section id="coeficiente-de-correlación-cofenético" class="level2" data-number="5.3">
 <h2 data-number="5.3" class="anchored" data-anchor-id="coeficiente-de-correlación-cofenético"><span class="header-section-number">5.3</span> Coeficiente de correlación cofenético</h2>
-<p>Un dendrograma impone una estructura sobre los datos que no necesariamente respeta las distancias originales. La <strong>matriz cofenética</strong> contiene, para cada par de observaciones, la distancia a la que quedaron unidas en el dendrograma. El coeficiente de correlación cofenético —la correlación entre esas distancias y las originales— mide qué tan fiel es esa representación: cuanto más alto, menos distorsión introduce el método.</p>
+<p>Un dendrograma impone una estructura sobre los datos que no necesariamente respeta las distancias originales. La <strong>matriz cofenética</strong> contiene, para cada par de observaciones, la distancia a la que quedaron unidas en el dendrograma. El coeficiente de correlación cofenético, la correlación entre esas distancias y las originales, mide qué tan fiel es esa representación: cuanto más alto, menos distorsión introduce el método.</p>
 <div class="cell">
 <details class="code-fold">
 <summary>Mostrar código</summary>
@@ -4797,7 +4797,7 @@ sin_estandarizar  1  2  3  4
 </section>
 <section id="sec-nro-conglomerados" class="level1" data-number="6">
 <h1 data-number="6"><span class="header-section-number">6</span> Selección del número de conglomerados</h1>
-<p>¿Cuántos grupos conviene retener? La teórica presenta tres criterios, todos construidos sobre la descomposición <span class="math inline">\(\textbf{T}=\textbf{W}+\textbf{B}\)</span> de la sección 3: comparan variabilidad dentro de los grupos con variabilidad total o entre grupos.</p>
+<p>¿Cuántos grupos conviene retener? Hay tres criterios usuales, todos construidos sobre la descomposición <span class="math inline">\(\textbf{T}=\textbf{W}+\textbf{B}\)</span> de la sección 3: comparan variabilidad dentro de los grupos con variabilidad total o entre grupos.</p>
 <p>Necesitamos primero la suma de cuadrados dentro (SCD) para una cantidad de grupos dada. Se escribe <strong>una función</strong>, en vez de repetir el cálculo para cada valor de <span class="math inline">\(k\)</span>:</p>
 <div class="cell">
 <details class="code-fold">
@@ -5020,8 +5020,8 @@ sin_estandarizar  1  2  3  4
 <span id="cb95-10"><a href="#cb95-10" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;grupos, más parecidos al grupo vecino que al propio. En esta partición &quot;</span>,</span>
 <span id="cb95-11"><a href="#cb95-11" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;{lista_estados} {verbo} con $s_i&lt;0$: `hclust()` los asigna a un grupo, pero &quot;</span>,</span>
 <span id="cb95-12"><a href="#cb95-12" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;su distancia al grupo vecino es, en promedio, menor que la distancia dentro &quot;</span>,</span>
-<span id="cb95-13"><a href="#cb95-13" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;del propio grupo. No es un error del algoritmo —cada observación tiene que &quot;</span>,</span>
-<span id="cb95-14"><a href="#cb95-14" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;ir a algún grupo— sino una señal de que, para esos estados en particular, &quot;</span>,</span>
+<span id="cb95-13"><a href="#cb95-13" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;del propio grupo. No es un error del algoritmo (cada observación tiene que &quot;</span>,</span>
+<span id="cb95-14"><a href="#cb95-14" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;ir a algún grupo), sino una señal de que, para esos estados en particular, &quot;</span>,</span>
 <span id="cb95-15"><a href="#cb95-15" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;la frontera entre grupos no está bien definida.&quot;</span></span>
 <span id="cb95-16"><a href="#cb95-16" aria-hidden="true" tabindex="-1"></a>  ))</span>
 <span id="cb95-17"><a href="#cb95-17" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span> {</span>
@@ -5031,12 +5031,12 @@ sin_estandarizar  1  2  3  4
 <span id="cb95-21"><a href="#cb95-21" aria-hidden="true" tabindex="-1"></a>  ))</span>
 <span id="cb95-22"><a href="#cb95-22" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
-<p>Casi todas las siluetas son positivas, pero unos pocos estados quedan con <span class="math inline">\(s_i\)</span> cercano a cero o negativo: son los que están en el borde entre dos grupos, más parecidos al grupo vecino que al propio. En esta partición <strong>Arkansas</strong> y <strong>Kentucky</strong> quedan con <span class="math inline">\(s_i&lt;0\)</span>: <code>hclust()</code> los asigna a un grupo, pero su distancia al grupo vecino es, en promedio, menor que la distancia dentro del propio grupo. No es un error del algoritmo —cada observación tiene que ir a algún grupo— sino una señal de que, para esos estados en particular, la frontera entre grupos no está bien definida.</p>
+<p>Casi todas las siluetas son positivas, pero unos pocos estados quedan con <span class="math inline">\(s_i\)</span> cercano a cero o negativo: son los que están en el borde entre dos grupos, más parecidos al grupo vecino que al propio. En esta partición <strong>Arkansas</strong> y <strong>Kentucky</strong> quedan con <span class="math inline">\(s_i&lt;0\)</span>: <code>hclust()</code> los asigna a un grupo, pero su distancia al grupo vecino es, en promedio, menor que la distancia dentro del propio grupo. No es un error del algoritmo (cada observación tiene que ir a algún grupo), sino una señal de que, para esos estados en particular, la frontera entre grupos no está bien definida.</p>
 </section>
 </section>
 <section id="descripción-de-los-grupos" class="level1" data-number="7">
 <h1 data-number="7"><span class="header-section-number">7</span> Descripción de los grupos</h1>
-<p>Una vez fijado el número de grupos, conviene caracterizarlos: qué variables distinguen a cada uno de la media general. La teórica propone un estadístico <span class="math inline">\(t\)</span> que compara la media del grupo <span class="math inline">\(g\)</span> en la variable <span class="math inline">\(j\)</span> contra la media general:</p>
+<p>Una vez fijado el número de grupos, conviene caracterizarlos: qué variables distinguen a cada uno de la media general. Se usa un estadístico <span class="math inline">\(t\)</span> que compara la media del grupo <span class="math inline">\(g\)</span> en la variable <span class="math inline">\(j\)</span> contra la media general:</p>
 <p><span class="math display">\[t_j = \frac{\bar{x}_{jg}-\bar{x}_j}{\sqrt{\frac{s_{jj}}{n_g}\cdot\frac{n-n_g}{n-1}}}\]</span></p>
 <p>Se calcula <strong>una vez, con una función</strong>, y se aplica a cada grupo con <code>map()</code>.</p>
 <div class="cell">
@@ -5355,11 +5355,11 @@ Dunn         0.2231 kmeans       6
 Silhouette   0.4085 hierarchical 2       </code></pre>
 </div>
 </div>
-<p>Ningún método domina en todas las medidas a la vez —es habitual que no lo haga—, pero da un panorama más completo que mirar un solo criterio: por ejemplo, si la silueta y la conectividad coinciden en preferir el mismo método y número de grupos, es una señal más fuerte que cualquiera de las dos por separado.</p>
+<p>Ningún método domina en todas las medidas a la vez (es habitual que no lo haga), pero da un panorama más completo que mirar un solo criterio: por ejemplo, si la silueta y la conectividad coinciden en preferir el mismo método y número de grupos, es una señal más fuerte que cualquiera de las dos por separado.</p>
 </section>
 <section id="otros-algoritmos" class="level1" data-number="11">
 <h1 data-number="11"><span class="header-section-number">11</span> Otros algoritmos</h1>
-<p>La teórica presenta estos algoritmos, pero aclara explícitamente que <strong>no forman parte de la evaluación de la materia</strong>. Se mencionan brevemente, sin desarrollo completo.</p>
+<p>Estos algoritmos <strong>no forman parte de la evaluación de la materia</strong>. Se mencionan brevemente, sin desarrollo completo.</p>
 <section id="k-medias-recortado" class="level2" data-number="11.1">
 <h2 data-number="11.1" class="anchored" data-anchor-id="k-medias-recortado"><span class="header-section-number">11.1</span> K-medias recortado</h2>
 <p>K-medias es sensible a valores atípicos: una observación extrema puede desplazar apreciablemente un centroide. El algoritmo recortado (Kondo, 2011) itera k-medias ignorando, en cada paso, el <span class="math inline">\(\alpha\%\)</span> de observaciones más alejadas de sus centros.</p>
@@ -5937,7 +5937,7 @@ especie       1   2   3
 <span id="cb127-26"><a href="#cb127-26" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb127-27"><a href="#cb127-27" aria-hidden="true" tabindex="-1"></a><span class="fu"># Introducción</span></span>
 <span id="cb127-28"><a href="#cb127-28" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb127-29"><a href="#cb127-29" aria-hidden="true" tabindex="-1"></a>El **análisis de conglomerados** (o *clustering*) busca identificar grupos relativamente homogéneos de observaciones a partir de un conjunto de variables: que cada grupo sea internamente homogéneo y heterogéneo respecto de los demás. A diferencia de los métodos de clasificación supervisada, acá no hay una variable de grupo conocida de antemano —de ahí que también se lo llame *clasificación no supervisada*.</span>
+<span id="cb127-29"><a href="#cb127-29" aria-hidden="true" tabindex="-1"></a>El **análisis de conglomerados** (o *clustering*) busca identificar grupos relativamente homogéneos de observaciones a partir de un conjunto de variables: que cada grupo sea internamente homogéneo y heterogéneo respecto de los demás. A diferencia de los métodos de clasificación supervisada, acá no hay una variable de grupo conocida de antemano (por eso, también se lo llama *clasificación no supervisada*).</span>
 <span id="cb127-30"><a href="#cb127-30" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb127-31"><a href="#cb127-31" aria-hidden="true" tabindex="-1"></a><span class="fu">## Los conjuntos de datos</span></span>
 <span id="cb127-32"><a href="#cb127-32" aria-hidden="true" tabindex="-1"></a></span>
@@ -5950,9 +5950,9 @@ especie       1   2   3
 <span id="cb127-39"><a href="#cb127-39" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> <span class="in">`UrbanPop`</span> <span class="pp">|</span> Porcentaje de población urbana <span class="pp">|</span></span>
 <span id="cb127-40"><a href="#cb127-40" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> <span class="in">`Rape`</span> <span class="pp">|</span> Arrestos por violación cada 100.000 habitantes <span class="pp">|</span></span>
 <span id="cb127-41"><a href="#cb127-41" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb127-42"><a href="#cb127-42" aria-hidden="true" tabindex="-1"></a>Los nombres de los estados quedan como nombres de fila, lo que va a ser útil más adelante para leer los dendrogramas. Además, las escalas de las variables son muy distintas: <span class="in">`Assault`</span> toma valores de dos órdenes de magnitud mayores que <span class="in">`Murder`</span>. Esto no es un detalle menor: va a ser el eje de la sección sobre estandarización.</span>
+<span id="cb127-42"><a href="#cb127-42" aria-hidden="true" tabindex="-1"></a>Los nombres de los estados quedan como nombres de fila, lo que va resultar útil más adelante para leer algunas visualizaciones. Por otro lado, las escalas de las variables son muy distintas: <span class="in">`Assault`</span> toma valores de dos órdenes de magnitud mayores que <span class="in">`Murder`</span>. Esto no es un detalle menor: va a ser el eje de la sección sobre estandarización.</span>
 <span id="cb127-43"><a href="#cb127-43" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb127-44"><a href="#cb127-44" aria-hidden="true" tabindex="-1"></a>Más adelante usamos también <span class="in">`penguins`</span> (el de la Unidad 1) para dos cosas que <span class="in">`USArrests`</span> no permite: comparar los conglomerados encontrados contra grupos verdaderamente conocidos (las especies), y trabajar con variables categóricas.</span>
+<span id="cb127-44"><a href="#cb127-44" aria-hidden="true" tabindex="-1"></a>Adicionalmente, se itulizará también <span class="in">`penguins`</span> (el de la Unidad 1) para dos cosas que <span class="in">`USArrests`</span> no permite: comparar los conglomerados encontrados contra grupos verdaderamente conocidos (las especies), y trabajar con variables categóricas.</span>
 <span id="cb127-45"><a href="#cb127-45" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb127-46"><a href="#cb127-46" aria-hidden="true" tabindex="-1"></a>::: {.callout-tip}</span>
 <span id="cb127-47"><a href="#cb127-47" aria-hidden="true" tabindex="-1"></a><span class="fu">## Material del práctico</span></span>
@@ -5961,7 +5961,7 @@ especie       1   2   3
 <span id="cb127-50"><a href="#cb127-50" aria-hidden="true" tabindex="-1"></a>repositorio de la materia:</span>
 <span id="cb127-51"><a href="#cb127-51" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb127-52"><a href="#cb127-52" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="co">[</span><span class="ot">Descargar `Unidad3_Cluster.R`</span><span class="co">](https://raw.githubusercontent.com/pabort/MAE-Multivariado/main/Unidad3_Cluster.R)</span></span>
-<span id="cb127-53"><a href="#cb127-53" aria-hidden="true" tabindex="-1"></a>  — clic derecho → &quot;Guardar enlace como…&quot;</span>
+<span id="cb127-53"><a href="#cb127-53" aria-hidden="true" tabindex="-1"></a>  (clic derecho → &quot;Guardar enlace como…&quot;)</span>
 <span id="cb127-54"><a href="#cb127-54" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="co">[</span><span class="ot">Ver el repositorio completo</span><span class="co">](https://github.com/pabort/MAE-Multivariado)</span></span>
 <span id="cb127-55"><a href="#cb127-55" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb127-56"><a href="#cb127-56" aria-hidden="true" tabindex="-1"></a>El script está organizado en las mismas secciones que este documento,</span>
@@ -6012,7 +6012,7 @@ especie       1   2   3
 <span id="cb127-105"><a href="#cb127-105" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb127-106"><a href="#cb127-106" aria-hidden="true" tabindex="-1"></a><span class="fu">## Un ejemplo con dos grupos conocidos</span></span>
 <span id="cb127-107"><a href="#cb127-107" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb127-108"><a href="#cb127-108" aria-hidden="true" tabindex="-1"></a>Para ver la descomposición en acción, conviene un ejemplo donde los grupos ya estén dados. La teórica usa 8 empresas hipotéticas con dos variables —inversión publicitaria y ventas (Aldás y Uriel, 2017)— divididas en dos grupos intuitivos: $G_1=<span class="sc">\{</span>E1,E2,E3,E4<span class="sc">\}</span>$ y $G_2=<span class="sc">\{</span>E5,E6,E7,E8<span class="sc">\}</span>$. Este mismo ejemplo se retoma en la sección de agrupamiento jerárquico.</span>
+<span id="cb127-108"><a href="#cb127-108" aria-hidden="true" tabindex="-1"></a>Para ver la descomposición en acción, conviene un ejemplo donde los grupos ya estén dados. Supongamos 8 empresas hipotéticas con dos variables: inversión publicitaria y ventas (Aldás y Uriel, 2017), divididas en dos grupos intuitivos: $G_1=<span class="sc">\{</span>E1,E2,E3,E4<span class="sc">\}</span>$ y $G_2=<span class="sc">\{</span>E5,E6,E7,E8<span class="sc">\}</span>$. Este mismo ejemplo se retoma en la sección de agrupamiento jerárquico.</span>
 <span id="cb127-109"><a href="#cb127-109" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb127-112"><a href="#cb127-112" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
 <span id="cb127-113"><a href="#cb127-113" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: empresas-datos</span></span>
@@ -6071,7 +6071,7 @@ especie       1   2   3
 <span id="cb127-172"><a href="#cb127-172" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb127-173"><a href="#cb127-173" aria-hidden="true" tabindex="-1"></a><span class="fu"># Medidas de proximidad</span></span>
 <span id="cb127-174"><a href="#cb127-174" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb127-175"><a href="#cb127-175" aria-hidden="true" tabindex="-1"></a>Toda técnica de agrupamiento necesita una noción de qué tan parecidas o distintas son dos observaciones. Esta sección recorre las medidas más usuales —tema central de la teórica— y muestra cómo se calculan en R.</span>
+<span id="cb127-175"><a href="#cb127-175" aria-hidden="true" tabindex="-1"></a>Toda técnica de agrupamiento necesita una noción de qué tan parecidas o distintas son dos observaciones. Esta sección recorre las medidas más usuales y muestra cómo se calculan en R.</span>
 <span id="cb127-176"><a href="#cb127-176" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb127-177"><a href="#cb127-177" aria-hidden="true" tabindex="-1"></a>Sean $r$ y $s$ dos observaciones cualesquiera (de las $n$ posibles), y $x_{rj}$, $x_{sj}$ los valores que toman en la variable $x_j$ ($j=1,\dots,p$).</span>
 <span id="cb127-178"><a href="#cb127-178" aria-hidden="true" tabindex="-1"></a></span>
@@ -6159,7 +6159,7 @@ especie       1   2   3
 <span id="cb127-270"><a href="#cb127-270" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb127-271"><a href="#cb127-271" aria-hidden="true" tabindex="-1"></a>Es la misma idea que la estandarización multivariante de la Unidad 1: esferizar los datos (llevar la covarianza a la identidad) y medir después la distancia euclídea de siempre. Ahí se usaba la raíz cuadrada simétrica $S^{-1/2}=U\Lambda^{-1/2}U&#39;$, obtenida por descomposición espectral; acá alcanza con cualquier matriz $L$ que cumpla $S^{-1}=L&#39;L$, y la descomposición de Cholesky da una directamente, sin pasar por autovalores.</span>
 <span id="cb127-272"><a href="#cb127-272" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb127-273"><a href="#cb127-273" aria-hidden="true" tabindex="-1"></a>Vale aclarar la diferencia con <span class="in">`stats::mahalanobis()`</span>: esa función calcula la distancia de cada observación a un punto fijo —típicamente la media—, no la distancia entre pares de observaciones. Es la que se usa en la Unidad 1 para detectar observaciones atípicas multivariadas.</span>
+<span id="cb127-273"><a href="#cb127-273" aria-hidden="true" tabindex="-1"></a>Vale aclarar la diferencia con <span class="in">`stats::mahalanobis()`</span>: esa función calcula la distancia de cada observación a un punto fijo (típicamente la media), no la distancia entre pares de observaciones. Es la que se usa en la Unidad 1 para detectar observaciones atípicas multivariadas.</span>
 <span id="cb127-274"><a href="#cb127-274" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb127-275"><a href="#cb127-275" aria-hidden="true" tabindex="-1"></a>::: {.callout-note collapse=&quot;true&quot;}</span>
 <span id="cb127-276"><a href="#cb127-276" aria-hidden="true" tabindex="-1"></a><span class="fu">## Verificación: la distancia de Mahalanobis vía Cholesky coincide con la forma cuadrática</span></span>
@@ -6336,7 +6336,7 @@ especie       1   2   3
 <span id="cb127-465"><a href="#cb127-465" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(sim_sorensen, <span class="dv">2</span>)</span>
 <span id="cb127-466"><a href="#cb127-466" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb127-467"><a href="#cb127-467" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb127-468"><a href="#cb127-468" aria-hidden="true" tabindex="-1"></a>En este ejemplo las seis observaciones comparten <span class="in">`es_torgersen = 1`</span>, así que ningún par tiene coincidencias en la ausencia ($d=0$ siempre) — es la única diferencia entre Jaccard y Sokal y Michener, así que acá coinciden exactamente:</span>
+<span id="cb127-468"><a href="#cb127-468" aria-hidden="true" tabindex="-1"></a>En este ejemplo las seis observaciones comparten <span class="in">`es_torgersen = 1`</span>, así que ningún par tiene coincidencias en la ausencia ($d=0$ siempre), la única diferencia entre Jaccard y Sokal y Michener, así que acá coinciden exactamente:</span>
 <span id="cb127-469"><a href="#cb127-469" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb127-472"><a href="#cb127-472" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
 <span id="cb127-473"><a href="#cb127-473" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: verificacion-sokal-michener</span></span>
@@ -6348,7 +6348,7 @@ especie       1   2   3
 <span id="cb127-479"><a href="#cb127-479" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb127-480"><a href="#cb127-480" aria-hidden="true" tabindex="-1"></a>Sorensen, en cambio, da valores sistemáticamente más altos que los otros dos: pondera el numerador con un factor 2 sobre las coincidencias de presencia, lo que lo hace, por construcción, siempre mayor o igual que Jaccard.</span>
 <span id="cb127-481"><a href="#cb127-481" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb127-482"><a href="#cb127-482" aria-hidden="true" tabindex="-1"></a>Cualquier similaridad $c(r,s)$ —no solo Jaccard— puede transformarse en una distancia al cuadrado con:</span>
+<span id="cb127-482"><a href="#cb127-482" aria-hidden="true" tabindex="-1"></a>Cualquier similaridad $c(r,s)$ (no solo Jaccard) puede transformarse en una distancia al cuadrado con:</span>
 <span id="cb127-483"><a href="#cb127-483" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb127-484"><a href="#cb127-484" aria-hidden="true" tabindex="-1"></a>$$d^2_{(r,s)} = c(r,r) + c(s,s) - 2c(r,s)$$</span>
 <span id="cb127-485"><a href="#cb127-485" aria-hidden="true" tabindex="-1"></a></span>
@@ -6365,7 +6365,7 @@ especie       1   2   3
 <span id="cb127-498"><a href="#cb127-498" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb127-499"><a href="#cb127-499" aria-hidden="true" tabindex="-1"></a><span class="fu">## Distancia de Gower para datos mixtos</span></span>
 <span id="cb127-500"><a href="#cb127-500" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb127-501"><a href="#cb127-501" aria-hidden="true" tabindex="-1"></a>Cuando hay variables cuantitativas y categóricas a la vez —como en <span class="in">`penguins`</span>, con dos numéricas y dos categóricas— ninguna de las distancias anteriores sirve por sí sola. La distancia de Gower combina, para cada variable, una contribución adecuada a su tipo (diferencia normalizada por el rango para las cuantitativas, coincidencia simple para las categóricas) y promedia:</span>
+<span id="cb127-501"><a href="#cb127-501" aria-hidden="true" tabindex="-1"></a>Cuando hay variables cuantitativas y categóricas a la vez (como en <span class="in">`penguins`</span>, con dos numéricas y dos categóricas), ninguna de las distancias anteriores sirve por sí sola. La distancia de Gower combina, para cada variable, una contribución adecuada a su tipo (diferencia normalizada por el rango para las cuantitativas, coincidencia simple para las categóricas) y promedia:</span>
 <span id="cb127-502"><a href="#cb127-502" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb127-503"><a href="#cb127-503" aria-hidden="true" tabindex="-1"></a>$$d_{rs}^2 = 1 - s_{rs}, \qquad s_{rs} = \frac{\sum_{j=1}^{p_1}\left(1-\frac{|x_{rj}-x_{sj}|}{\text{recorrido}(x_j)}\right) + a + \alpha}{p_1+(p_2-d)+p_3}$$</span>
 <span id="cb127-504"><a href="#cb127-504" aria-hidden="true" tabindex="-1"></a></span>
@@ -6404,11 +6404,11 @@ especie       1   2   3
 <span id="cb127-541"><a href="#cb127-541" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb127-542"><a href="#cb127-542" aria-hidden="true" tabindex="-1"></a><span class="fu"># Agrupamiento jerárquico</span></span>
 <span id="cb127-543"><a href="#cb127-543" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb127-544"><a href="#cb127-544" aria-hidden="true" tabindex="-1"></a>Los métodos jerárquicos construyen una secuencia de particiones $C_0, \dots, C_m$, con $C_0$ formada por $n$ grupos (cada observación es su propio grupo) y $C_m$ por uno solo (todas las observaciones juntas). En cada paso se fusionan los dos grupos más próximos, según algún criterio de distancia entre grupos —el que distingue a los distintos métodos de enlace.</span>
+<span id="cb127-544"><a href="#cb127-544" aria-hidden="true" tabindex="-1"></a>Los métodos jerárquicos construyen una secuencia de particiones $C_0, \dots, C_m$, con $C_0$ formada por $n$ grupos (cada observación es su propio grupo) y $C_m$ por uno solo (todas las observaciones juntas). En cada paso se fusionan los dos grupos más próximos, según algún criterio de distancia entre grupos: el que distingue a los distintos métodos de enlace.</span>
 <span id="cb127-545"><a href="#cb127-545" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb127-546"><a href="#cb127-546" aria-hidden="true" tabindex="-1"></a><span class="fu">## Paso a paso: el método del centroide</span></span>
 <span id="cb127-547"><a href="#cb127-547" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb127-548"><a href="#cb127-548" aria-hidden="true" tabindex="-1"></a>Antes de usar <span class="in">`hclust()`</span> conviene reproducir a mano el ejemplo de la teórica, para ver qué hace el algoritmo en cada paso. Son las mismas 8 empresas de la sección anterior, ahora sin conocer los grupos de antemano.</span>
+<span id="cb127-548"><a href="#cb127-548" aria-hidden="true" tabindex="-1"></a>Antes de usar <span class="in">`hclust()`</span> conviene reproducir a mano el método, para ver qué hace el algoritmo en cada paso. Son las mismas 8 empresas de la sección anterior, ahora sin conocer los grupos de antemano.</span>
 <span id="cb127-549"><a href="#cb127-549" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb127-550"><a href="#cb127-550" aria-hidden="true" tabindex="-1"></a>**Paso 1.** Se parte de la matriz de distancias euclídeas al cuadrado entre las 8 empresas:</span>
 <span id="cb127-551"><a href="#cb127-551" aria-hidden="true" tabindex="-1"></a></span>
@@ -6508,7 +6508,7 @@ especie       1   2   3
 <span id="cb127-657"><a href="#cb127-657" aria-hidden="true" tabindex="-1"></a>::: {.callout-note collapse=&quot;true&quot;}</span>
 <span id="cb127-658"><a href="#cb127-658" aria-hidden="true" tabindex="-1"></a><span class="fu">## Nota sobre `ward.D` vs. `ward.D2`</span></span>
 <span id="cb127-659"><a href="#cb127-659" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb127-660"><a href="#cb127-660" aria-hidden="true" tabindex="-1"></a>El método de Ward, tal como lo escribe R e Infostat, usa el incremento $I_{g_1,g_2}=\frac{2n_1n_2}{n_1+n_2}<span class="sc">\|</span>\bar{\textbf{x}}_{g_1}-\bar{\textbf{x}}_{g_2}\|^2$ (el doble de la fórmula &quot;clásica&quot;), y espera que se le pase la matriz de distancias **ya elevada al cuadrado** (`ward.D`). Se verifica reproduciendo el primer incremento de la teórica, $I_{(12),(34)}=282{,}5$:</span>
+<span id="cb127-660"><a href="#cb127-660" aria-hidden="true" tabindex="-1"></a>El método de Ward, tal como lo escribe R e Infostat, usa el incremento $I_{g_1,g_2}=\frac{2n_1n_2}{n_1+n_2}<span class="sc">\|</span>\bar{\textbf{x}}_{g_1}-\bar{\textbf{x}}_{g_2}\|^2$ (el doble de la fórmula &quot;clásica&quot;), y espera que se le pase la matriz de distancias **ya elevada al cuadrado** (`ward.D`). Se verifica reproduciendo el primer incremento, $I_{(12),(34)}=282{,}5$:</span>
 <span id="cb127-661"><a href="#cb127-661" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb127-664"><a href="#cb127-664" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
 <span id="cb127-665"><a href="#cb127-665" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: verificacion-ward</span></span>
@@ -6544,7 +6544,7 @@ especie       1   2   3
 <span id="cb127-697"><a href="#cb127-697" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb127-698"><a href="#cb127-698" aria-hidden="true" tabindex="-1"></a><span class="fu">## Coeficiente de correlación cofenético</span></span>
 <span id="cb127-699"><a href="#cb127-699" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb127-700"><a href="#cb127-700" aria-hidden="true" tabindex="-1"></a>Un dendrograma impone una estructura sobre los datos que no necesariamente respeta las distancias originales. La **matriz cofenética** contiene, para cada par de observaciones, la distancia a la que quedaron unidas en el dendrograma. El coeficiente de correlación cofenético —la correlación entre esas distancias y las originales— mide qué tan fiel es esa representación: cuanto más alto, menos distorsión introduce el método.</span>
+<span id="cb127-700"><a href="#cb127-700" aria-hidden="true" tabindex="-1"></a>Un dendrograma impone una estructura sobre los datos que no necesariamente respeta las distancias originales. La **matriz cofenética** contiene, para cada par de observaciones, la distancia a la que quedaron unidas en el dendrograma. El coeficiente de correlación cofenético, la correlación entre esas distancias y las originales, mide qué tan fiel es esa representación: cuanto más alto, menos distorsión introduce el método.</span>
 <span id="cb127-701"><a href="#cb127-701" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb127-704"><a href="#cb127-704" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
 <span id="cb127-705"><a href="#cb127-705" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: cofenetica</span></span>
@@ -6595,7 +6595,7 @@ especie       1   2   3
 <span id="cb127-756"><a href="#cb127-756" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb127-757"><a href="#cb127-757" aria-hidden="true" tabindex="-1"></a><span class="fu"># Selección del número de conglomerados {#sec-nro-conglomerados}</span></span>
 <span id="cb127-758"><a href="#cb127-758" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb127-759"><a href="#cb127-759" aria-hidden="true" tabindex="-1"></a>¿Cuántos grupos conviene retener? La teórica presenta tres criterios, todos construidos sobre la descomposición $\textbf{T}=\textbf{W}+\textbf{B}$ de la sección 3: comparan variabilidad dentro de los grupos con variabilidad total o entre grupos.</span>
+<span id="cb127-759"><a href="#cb127-759" aria-hidden="true" tabindex="-1"></a>¿Cuántos grupos conviene retener? Hay tres criterios usuales, todos construidos sobre la descomposición $\textbf{T}=\textbf{W}+\textbf{B}$ de la sección 3: comparan variabilidad dentro de los grupos con variabilidad total o entre grupos.</span>
 <span id="cb127-760"><a href="#cb127-760" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb127-761"><a href="#cb127-761" aria-hidden="true" tabindex="-1"></a>Necesitamos primero la suma de cuadrados dentro (SCD) para una cantidad de grupos dada. Se escribe **una función**, en vez de repetir el cálculo para cada valor de $k$:</span>
 <span id="cb127-762"><a href="#cb127-762" aria-hidden="true" tabindex="-1"></a></span>
@@ -6767,8 +6767,8 @@ especie       1   2   3
 <span id="cb127-948"><a href="#cb127-948" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;grupos, más parecidos al grupo vecino que al propio. En esta partición &quot;</span>,</span>
 <span id="cb127-949"><a href="#cb127-949" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;{lista_estados} {verbo} con $s_i&lt;0$: `hclust()` los asigna a un grupo, pero &quot;</span>,</span>
 <span id="cb127-950"><a href="#cb127-950" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;su distancia al grupo vecino es, en promedio, menor que la distancia dentro &quot;</span>,</span>
-<span id="cb127-951"><a href="#cb127-951" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;del propio grupo. No es un error del algoritmo —cada observación tiene que &quot;</span>,</span>
-<span id="cb127-952"><a href="#cb127-952" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;ir a algún grupo— sino una señal de que, para esos estados en particular, &quot;</span>,</span>
+<span id="cb127-951"><a href="#cb127-951" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;del propio grupo. No es un error del algoritmo (cada observación tiene que &quot;</span>,</span>
+<span id="cb127-952"><a href="#cb127-952" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;ir a algún grupo), sino una señal de que, para esos estados en particular, &quot;</span>,</span>
 <span id="cb127-953"><a href="#cb127-953" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;la frontera entre grupos no está bien definida.&quot;</span></span>
 <span id="cb127-954"><a href="#cb127-954" aria-hidden="true" tabindex="-1"></a>  ))</span>
 <span id="cb127-955"><a href="#cb127-955" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span> {</span>
@@ -6781,7 +6781,7 @@ especie       1   2   3
 <span id="cb127-962"><a href="#cb127-962" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb127-963"><a href="#cb127-963" aria-hidden="true" tabindex="-1"></a><span class="fu"># Descripción de los grupos</span></span>
 <span id="cb127-964"><a href="#cb127-964" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb127-965"><a href="#cb127-965" aria-hidden="true" tabindex="-1"></a>Una vez fijado el número de grupos, conviene caracterizarlos: qué variables distinguen a cada uno de la media general. La teórica propone un estadístico $t$ que compara la media del grupo $g$ en la variable $j$ contra la media general:</span>
+<span id="cb127-965"><a href="#cb127-965" aria-hidden="true" tabindex="-1"></a>Una vez fijado el número de grupos, conviene caracterizarlos: qué variables distinguen a cada uno de la media general. Se usa un estadístico $t$ que compara la media del grupo $g$ en la variable $j$ contra la media general:</span>
 <span id="cb127-966"><a href="#cb127-966" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb127-967"><a href="#cb127-967" aria-hidden="true" tabindex="-1"></a>$$t_j = \frac{\bar{x}_{jg}-\bar{x}_j}{\sqrt{\frac{s_{jj}}{n_g}\cdot\frac{n-n_g}{n-1}}}$$</span>
 <span id="cb127-968"><a href="#cb127-968" aria-hidden="true" tabindex="-1"></a></span>
@@ -6971,11 +6971,11 @@ especie       1   2   3
 <span id="cb127-1176"><a href="#cb127-1176" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(comparacion)</span>
 <span id="cb127-1177"><a href="#cb127-1177" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb127-1178"><a href="#cb127-1178" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb127-1179"><a href="#cb127-1179" aria-hidden="true" tabindex="-1"></a>Ningún método domina en todas las medidas a la vez —es habitual que no lo haga—, pero da un panorama más completo que mirar un solo criterio: por ejemplo, si la silueta y la conectividad coinciden en preferir el mismo método y número de grupos, es una señal más fuerte que cualquiera de las dos por separado.</span>
+<span id="cb127-1179"><a href="#cb127-1179" aria-hidden="true" tabindex="-1"></a>Ningún método domina en todas las medidas a la vez (es habitual que no lo haga), pero da un panorama más completo que mirar un solo criterio: por ejemplo, si la silueta y la conectividad coinciden en preferir el mismo método y número de grupos, es una señal más fuerte que cualquiera de las dos por separado.</span>
 <span id="cb127-1180"><a href="#cb127-1180" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb127-1181"><a href="#cb127-1181" aria-hidden="true" tabindex="-1"></a><span class="fu"># Otros algoritmos</span></span>
 <span id="cb127-1182"><a href="#cb127-1182" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb127-1183"><a href="#cb127-1183" aria-hidden="true" tabindex="-1"></a>La teórica presenta estos algoritmos, pero aclara explícitamente que **no forman parte de la evaluación de la materia**. Se mencionan brevemente, sin desarrollo completo.</span>
+<span id="cb127-1183"><a href="#cb127-1183" aria-hidden="true" tabindex="-1"></a>Estos algoritmos **no forman parte de la evaluación de la materia**. Se mencionan brevemente, sin desarrollo completo.</span>
 <span id="cb127-1184"><a href="#cb127-1184" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb127-1185"><a href="#cb127-1185" aria-hidden="true" tabindex="-1"></a><span class="fu">## K-medias recortado</span></span>
 <span id="cb127-1186"><a href="#cb127-1186" aria-hidden="true" tabindex="-1"></a></span>

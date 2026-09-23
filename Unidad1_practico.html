@@ -3698,7 +3698,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Fecha de publicación</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">22 de septiembre de 2026</p>
+      <p class="date">23 de septiembre de 2026</p>
     </div>
   </div>
   
@@ -3712,7 +3712,7 @@ window.Quarto = {
 
 <section id="introducción" class="level1" data-number="1">
 <h1 data-number="1"><span class="header-section-number">1</span> Introducción</h1>
-<p>Este práctico acompaña a la clase teórica de la Unidad I y recorre las herramientas básicas del análisis descriptivo e inferencial multivariado: matrices de varianzas-covarianzas y correlación, medidas de variabilidad multivariada, distancias, evaluación del supuesto de normalidad multivariada, y los contrastes clásicos de medias y de matrices de covarianza (<span class="math inline">\(T^2\)</span> de Hotelling, test de Box M).</p>
+<p>Este práctico recorre las herramientas básicas del análisis descriptivo e inferencial multivariado: matrices de varianzas-covarianzas y correlación, medidas de variabilidad multivariada, distancias, evaluación del supuesto de normalidad multivariada, y los contrastes clásicos de medias y de matrices de covarianza (<span class="math inline">\(T^2\)</span> de Hotelling, test de Box M).</p>
 <section id="el-conjunto-de-datos-palmer-penguins" class="level2" data-number="1.1">
 <h2 data-number="1.1" class="anchored" data-anchor-id="el-conjunto-de-datos-palmer-penguins"><span class="header-section-number">1.1</span> El conjunto de datos: Palmer Penguins</h2>
 <p>Vamos a trabajar con <code>penguins</code>, del proyecto <strong>Palmer Penguins</strong> (Horst, Hill y Gorman, 2020). Contiene mediciones morfológicas de 344 pingüinos de tres especies (<em>Adelie</em>, <em>Chinstrap</em>, <em>Gentoo</em>), recolectadas entre 2007 y 2009 en la Estación Palmer, Antártida, por la Dra. Kristen Gorman en el marco del programa de investigación ecológica de largo plazo <em>Palmer LTER</em> (Gorman, Williams y Fraser, 2014).</p>
@@ -3750,7 +3750,7 @@ window.Quarto = {
 ::: {.callout-note}
 ## Sobre el ejemplo clásico de la bibliografía: los alcornoques
 
-El ejemplo que seguramente encuentren en la bibliografía del curso (Peña, *Análisis de Datos Multivariantes*; Cuadras, *Nuevos Métodos de Análisis Multivariante*) es el de los **alcornoques** (*cork data*), publicado originalmente por Rao (1948). Mide, en 28 alcornoques (*Quercus suber*), el depósito de corcho (en centigramos) en las cuatro direcciones cardinales (N, E, S, O), con el objetivo de responder si el grosor del corcho varía sistemáticamente según la orientación del árbol. Es *el* ejemplo canónico para introducir los contrastes multivariados de una muestra, y vale la pena conocerlo — pero para este práctico usamos Palmer Penguins por tratarse de un conjunto de datos más grande, con grupos naturales y de uso extendido en la enseñanza actual.
+El ejemplo que seguramente encuentren en la bibliografía del curso (Peña, *Análisis de Datos Multivariantes*; Cuadras, *Nuevos Métodos de Análisis Multivariante*) es el de los **alcornoques** (*cork data*), publicado originalmente por Rao (1948). Mide, en 28 alcornoques (*Quercus suber*), el depósito de corcho (en centigramos) en las cuatro direcciones cardinales (N, E, S, O), con el objetivo de responder si el grosor del corcho varía sistemáticamente según la orientación del árbol. Es *el* ejemplo canónico para introducir los contrastes multivariados de una muestra, y vale la pena conocerlo, pero para este práctico usamos Palmer Penguins por tratarse de un conjunto de datos más grande, con grupos naturales y de uso extendido en la enseñanza actual.
 :::
 
  -->
@@ -3766,7 +3766,7 @@ El ejemplo que seguramente encuentren en la bibliografía del curso (Peña, *An�
 <div class="callout-body-container callout-body">
 <p>Todo el código de este documento está disponible como script de R en el repositorio de la materia:</p>
 <ul>
-<li><a href="https://raw.githubusercontent.com/pabort/MAE-Multivariado/main/Unidad1_practico.R">Descargar <code>Unidad1_practico.R</code></a> — clic derecho → “Guardar enlace como…”</li>
+<li><a href="https://raw.githubusercontent.com/pabort/MAE-Multivariado/main/Unidad1_practico.R">Descargar <code>Unidad1_practico.R</code></a> (clic derecho → “Guardar enlace como…”)</li>
 <li><a href="https://github.com/pabort/MAE-Multivariado">Ver el repositorio completo</a></li>
 </ul>
 <p>El script está organizado en las mismas secciones que este documento, así que se puede navegar desde el índice de RStudio (Ctrl+Shift+O).</p>
@@ -3776,7 +3776,7 @@ El ejemplo que seguramente encuentren en la bibliografía del curso (Peña, *An�
 </section>
 <section id="carga-de-paquetes-y-datos" class="level1" data-number="2">
 <h1 data-number="2"><span class="header-section-number">2</span> Carga de paquetes y datos</h1>
-<p>Importante: el paquete <code>biotools</code> carga a su vez <code>MASS</code>, cuya función <code>select()</code> <strong>enmascara</strong> a <code>dplyr::select()</code>. Por eso cargamos <code>tidyverse</code> en último lugar — así sus funciones (<code>select()</code>, <code>filter()</code>, etc.) quedan disponibles sin tener que escribir <code>dplyr::select()</code> en cada uso.</p>
+<p>Importante: el paquete <code>biotools</code> carga a su vez <code>MASS</code>, cuya función <code>select()</code> <strong>enmascara</strong> a <code>dplyr::select()</code>. Por eso cargamos <code>tidyverse</code> en último lugar: así sus funciones (<code>select()</code>, <code>filter()</code>, etc.) quedan disponibles sin tener que escribir <code>dplyr::select()</code> en cada uso.</p>
 <div class="cell">
 <details class="code-fold">
 <summary>Mostrar código</summary>
@@ -3946,7 +3946,7 @@ max              46.00          21.5               210        4775</code></pre>
 </div>
 </div>
 </div>
-<p><code>body_mass_g</code> es la que más se aleja de la normal, con el exceso más negativo (<span class="math inline">\(-0.594\)</span>): es platicúrtica, con colas más livianas que una normal. Tiene sentido biológico — la masa corporal de un pingüino está acotada (no hay individuos infinitamente livianos ni pesados dentro de una especie), lo que comprime las colas de la distribución respecto de lo que predeciría una normal.</p>
+<p><code>body_mass_g</code> es la que más se aleja de la normal, con el exceso más negativo (<span class="math inline">\(-0.594\)</span>): es platicúrtica, con colas más livianas que una normal. Tiene sentido biológico: la masa corporal de un pingüino está acotada (no hay individuos infinitamente livianos ni pesados dentro de una especie), lo que comprime las colas de la distribución respecto de lo que predeciría una normal.</p>
 </div>
 </div>
 </div>
@@ -3993,7 +3993,7 @@ max              46.00          21.5               210        4775</code></pre>
 </div>
 </div>
 </div>
-<p>Ya a nivel univariado se nota que Gentoo se separa bastante del resto (aleta y masa corporal más grandes, pico más angosto) — una primera pista de que el análisis multivariado más adelante va a encontrar diferencias claras entre grupos.</p>
+<p>Ya a nivel univariado se nota que Gentoo se separa bastante del resto (aleta y masa corporal más grandes, pico más angosto), una primera pista de que el análisis multivariado más adelante va a encontrar diferencias claras entre grupos.</p>
 </section>
 </section>
 <section id="matrices-de-covarianza-y-correlación" class="level2" data-number="3.2">
@@ -4051,8 +4051,8 @@ body_mass_g            0.5488658     0.5761382         0.4682017   1.0000000</co
 <h2 data-number="3.3" class="anchored" data-anchor-id="medidas-de-variabilidad-multivariada"><span class="header-section-number">3.3</span> Medidas de variabilidad multivariada</h2>
 <p>Cuando hay más de una variable, un único número no alcanza para resumir “cuánto varían los datos en conjunto”. Algunas medidas usuales:</p>
 <ul>
-<li><strong>Varianza total</strong>: la traza de <span class="math inline">\(S\)</span> — la suma de las varianzas individuales, sin tener en cuenta la correlación entre variables.</li>
-<li><strong>Varianza generalizada</strong>: el determinante de <span class="math inline">\(S\)</span> — puede interpretarse como el volumen del elipsoide de dispersión de los datos. Si las variables están muy correlacionadas, el elipsoide es “aplanado” y la varianza generalizada es chica, aun cuando las varianzas individuales sean grandes.</li>
+<li><strong>Varianza total</strong>: la traza de <span class="math inline">\(S\)</span>, la suma de las varianzas individuales, sin tener en cuenta la correlación entre variables.</li>
+<li><strong>Varianza generalizada</strong>: el determinante de <span class="math inline">\(S\)</span>, que puede interpretarse como el volumen del elipsoide de dispersión de los datos. Si las variables están muy correlacionadas, el elipsoide es “aplanado” y la varianza generalizada es chica, aun cuando las varianzas individuales sean grandes.</li>
 <li><strong>Varianza efectiva</strong>: <span class="math inline">\(|S|^{1/p}\)</span>, una forma de “promediar” la varianza generalizada en la escala original de las variables.</li>
 <li><strong>Coeficiente de dependencia efectiva</strong>: mide, en una escala de 0 a 1, cuán fuerte es la dependencia lineal conjunta entre las variables.</li>
 </ul>
@@ -4085,7 +4085,7 @@ body_mass_g            0.5488658     0.5761382         0.4682017   1.0000000</co
 </div>
 <section id="comparación-entre-especies-1" class="level3" data-number="3.3.1">
 <h3 data-number="3.3.1" class="anchored" data-anchor-id="comparación-entre-especies-1"><span class="header-section-number">3.3.1</span> Comparación entre especies</h3>
-<p>Repitiendo estos cálculos para cada especie por separado, se puede comparar cómo varía —en conjunto— la morfología de cada grupo:</p>
+<p>Repitiendo estos cálculos para cada especie por separado, se puede comparar cómo varía (en conjunto) la morfología de cada grupo:</p>
 <div class="cell">
 <details class="code-fold">
 <summary>Mostrar código</summary>
@@ -4114,9 +4114,9 @@ body_mass_g            0.5488658     0.5761382         0.4682017   1.0000000</co
 </div>
 </div>
 </div>
-<p>Un resultado interesante: Gentoo tiene la <strong>varianza total</strong> más alta de las tres especies (son los pingüinos más grandes, con más variabilidad en masa corporal), pero la <strong>varianza generalizada</strong> más baja. La razón está en la última columna: Gentoo también tiene la <strong>dependencia efectiva</strong> más alta — sus 4 variables están más correlacionadas entre sí que en Adelie, así que buena parte de la variabilidad de una variable ya está “contenida” en las otras. El elipsoide de dispersión de Gentoo es más aplanado (más redundancia, menos variabilidad genuinamente multivariada), aunque cada variable por separado varíe bastante. Es un buen ejemplo de por qué la varianza total (que ignora la correlación) puede llevar a una conclusión distinta que la varianza generalizada (que sí la tiene en cuenta).</p>
-<p>La <strong>correlación parcial</strong> entre dos variables mide su asociación <em>controlando</em> el efecto del resto — a diferencia de la correlación simple, que puede estar “inflada” por variables en común.</p>
-<p>Se calcula a partir de la <strong>matriz de precisión</strong> <span class="math inline">\(S^{-1}\)</span> (la inversa de la matriz de covarianzas), que tiene una interpretación propia: cada fila contiene los coeficientes de la regresión múltiple de esa variable contra el resto (con el signo cambiado y ponderados por la varianza residual), y su diagonal son las inversas de esas varianzas residuales. Siguiendo la notación de la teórica:</p>
+<p>Un resultado interesante: Gentoo tiene la <strong>varianza total</strong> más alta de las tres especies (son los pingüinos más grandes, con más variabilidad en masa corporal), pero la <strong>varianza generalizada</strong> más baja. La razón está en la última columna: Gentoo también tiene la <strong>dependencia efectiva</strong> más alta. Sus 4 variables están más correlacionadas entre sí que en Adelie, así que buena parte de la variabilidad de una variable ya está “contenida” en las otras. El elipsoide de dispersión de Gentoo es más aplanado (más redundancia, menos variabilidad genuinamente multivariada), aunque cada variable por separado varíe bastante. Es un buen ejemplo de por qué la varianza total (que ignora la correlación) puede llevar a una conclusión distinta que la varianza generalizada (que sí la tiene en cuenta).</p>
+<p>La <strong>correlación parcial</strong> entre dos variables mide su asociación <em>controlando</em> el efecto del resto, a diferencia de la correlación simple, que puede estar “inflada” por variables en común.</p>
+<p>Se calcula a partir de la <strong>matriz de precisión</strong> <span class="math inline">\(S^{-1}\)</span> (la inversa de la matriz de covarianzas), que tiene una interpretación propia: cada fila contiene los coeficientes de la regresión múltiple de esa variable contra el resto (con el signo cambiado y ponderados por la varianza residual), y su diagonal son las inversas de esas varianzas residuales:</p>
 <p><span class="math display">\[R_p = (-1)_{diag} \; \text{diag}(S^{-1})^{-1/2} \; S^{-1} \; \text{diag}(S^{-1})^{-1/2}\]</span></p>
 <p>donde <span class="math inline">\(\text{diag}(S^{-1})\)</span> es la diagonal principal de <span class="math inline">\(S^{-1}\)</span>, y <span class="math inline">\((-1)_{diag}\)</span> indica que se cambia el signo de todos los elementos fuera de la diagonal.</p>
 <div class="cell">
@@ -4391,7 +4391,7 @@ $vectors
 </div>
 </div>
 </div>
-<p>Casi toda la variabilidad —el 99.98%— queda concentrada en la primera dirección. Antes de leer esto como que los datos son “casi unidimensionales”, conviene mirar en qué escala está cada variable: <code>body_mass_g</code> se mide en gramos (varianza en el orden de los miles), mientras que las otras tres están en milímetros (varianza en el orden de las unidades o decenas). Sobre la matriz de covarianzas <span class="math inline">\(S\)</span> sin estandarizar, la variable de mayor escala domina: la primera “dirección de máxima variabilidad” termina siendo, en la práctica, casi exclusivamente <code>body_mass_g</code>. Es el error clásico al recién empezar con componentes principales — trabajar sobre <span class="math inline">\(S\)</span> sin preguntarse antes si las variables están en unidades comparables. La sección siguiente, sobre estandarización multivariante, es justamente la forma de evitarlo.</p>
+<p>Casi toda la variabilidad (el 99.98%) queda concentrada en la primera dirección. Antes de leer esto como que los datos son “casi unidimensionales”, conviene mirar en qué escala está cada variable: <code>body_mass_g</code> se mide en gramos (varianza en el orden de los miles), mientras que las otras tres están en milímetros (varianza en el orden de las unidades o decenas). Sobre la matriz de covarianzas <span class="math inline">\(S\)</span> sin estandarizar, la variable de mayor escala domina: la primera “dirección de máxima variabilidad” termina siendo, en la práctica, casi exclusivamente <code>body_mass_g</code>. Es el error clásico al recién empezar con componentes principales: trabajar sobre <span class="math inline">\(S\)</span> sin preguntarse antes si las variables están en unidades comparables. La sección siguiente, sobre estandarización multivariante, es justamente la forma de evitarlo.</p>
 </div>
 </div>
 </div>
@@ -4438,7 +4438,7 @@ $vectors
 <div id="callout-7" class="callout-7-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>La transformación <span class="math inline">\(Y_M = \tilde{X}\,U\Lambda^{-1/2}U&#39;\)</span> no es una fórmula arbitraria: es, precisamente, la que hace que la distancia euclídea entre observaciones estandarizadas sea la distancia de Mahalanobis entre las observaciones originales.</p>
-<p>La matriz <span class="math inline">\(S^{-1/2} = U\Lambda^{-1/2}U&#39;\)</span> cumple <span class="math inline">\(S^{-1/2}S^{-1/2} = S^{-1}\)</span> —es, literalmente, la raíz cuadrada de <span class="math inline">\(S^{-1}\)</span>—, así que la forma cuadrática de Mahalanobis se puede reescribir como una norma al cuadrado:</p>
+<p>La matriz <span class="math inline">\(S^{-1/2} = U\Lambda^{-1/2}U&#39;\)</span> cumple <span class="math inline">\(S^{-1/2}S^{-1/2} = S^{-1}\)</span> (es, literalmente, la raíz cuadrada de <span class="math inline">\(S^{-1}\)</span>), así que la forma cuadrática de Mahalanobis se puede reescribir como una norma al cuadrado:</p>
 <p><span class="math display">\[d_M^2(x_i, \bar{x}) = (x_i-\bar{x})&#39;S^{-1}(x_i-\bar{x}) = (x_i-\bar{x})&#39;S^{-1/2}S^{-1/2}(x_i-\bar{x}) = \left\|S^{-1/2}(x_i-\bar{x})\right\|^2\]</span></p>
 <p>que es exactamente la distancia euclídea al cuadrado de la observación estandarizada multivariante <span class="math inline">\(y_{M_i} = S^{-1/2}(x_i - \bar{x})\)</span>.</p>
 <div class="cell">
@@ -4455,7 +4455,7 @@ $vectors
 <pre><code>[1] 1.337597e-11</code></pre>
 </div>
 </div>
-<p>Es lo que le da sentido a la estandarización multivariante más allá de “dejar la covarianza en identidad”: trabajar con <span class="math inline">\(Y_M\)</span> en vez de <span class="math inline">\(X\)</span> convierte cualquier distancia euclídea —por ejemplo, la que usan los métodos de conglomerados de la Unidad 3— en una distancia de Mahalanobis sobre los datos originales, sin tener que cargar con <span class="math inline">\(S^{-1}\)</span> en cada cálculo.</p>
+<p>Es lo que le da sentido a la estandarización multivariante más allá de “dejar la covarianza en identidad”: trabajar con <span class="math inline">\(Y_M\)</span> en vez de <span class="math inline">\(X\)</span> convierte cualquier distancia euclídea (por ejemplo, la que usan los métodos de conglomerados de la Unidad 3) en una distancia de Mahalanobis sobre los datos originales, sin tener que cargar con <span class="math inline">\(S^{-1}\)</span> en cada cálculo.</p>
 </div>
 </div>
 </div>
@@ -4583,7 +4583,7 @@ $vectors
 </section>
 <section id="asimetría-y-curtosis-multivariada" class="level1" data-number="5">
 <h1 data-number="5"><span class="header-section-number">5</span> Asimetría y curtosis multivariada</h1>
-<p>Los coeficientes de Mardia generalizan la asimetría y la curtosis al caso multivariado. Bajo normalidad multivariada, ambos estadísticos siguen distribuciones conocidas (aproximadamente <span class="math inline">\(\chi^2\)</span> la asimetría, normal estandarizada la curtosis), lo que permite construir un test formal de normalidad — que retomamos en la próxima sección.</p>
+<p>Los coeficientes de Mardia generalizan la asimetría y la curtosis al caso multivariado. Bajo normalidad multivariada, ambos estadísticos siguen distribuciones conocidas (aproximadamente <span class="math inline">\(\chi^2\)</span> la asimetría, normal estandarizada la curtosis), lo que permite construir un test formal de normalidad, que retomamos en la próxima sección.</p>
 <div class="cell">
 <details class="code-fold">
 <summary>Mostrar código</summary>
@@ -4627,7 +4627,7 @@ $vectors
 </div>
 </div>
 </div>
-<p>Si comparamos las tres especies a la vez, el mismo gráfico muestra claramente la separación entre grupos — algo que vamos a retomar en la sección de inferencia:</p>
+<p>Si comparamos las tres especies a la vez, el mismo gráfico muestra claramente la separación entre grupos, algo que vamos a retomar en la sección de inferencia:</p>
 <div class="cell">
 <details class="code-fold">
 <summary>Mostrar código</summary>
@@ -4844,7 +4844,7 @@ b2p =  22.57   kurtosis =  -1.27  with probability &lt;=  0.2</code></pre>
 </div>
 <div id="callout-8" class="callout-8-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>La normalidad multivariada implica que las 4 marginales sean normales, pero la implicación no vale al revés: que cada variable sea normal por separado no garantiza que el vector conjunto lo sea. Aun así, es un chequeo complementario razonable. Hacerlo variable por variable expone un problema propio: al correr <span class="math inline">\(p=4\)</span> tests simultáneos, la probabilidad de al menos un rechazo falso queda por encima del 5% nominal de cada test individual, así que conviene corregir por comparaciones múltiples — acá, con Bonferroni (multiplicar cada p-valor por <span class="math inline">\(p\)</span>).</p>
+<p>La normalidad multivariada implica que las 4 marginales sean normales, pero la implicación no vale al revés: que cada variable sea normal por separado no garantiza que el vector conjunto lo sea. Aun así, es un chequeo complementario razonable. Hacerlo variable por variable expone un problema propio: al correr <span class="math inline">\(p=4\)</span> tests simultáneos, la probabilidad de al menos un rechazo falso queda por encima del 5% nominal de cada test individual, así que conviene corregir por comparaciones múltiples: acá, con Bonferroni (multiplicar cada p-valor por <span class="math inline">\(p\)</span>).</p>
 <div class="cell">
 <details class="code-fold">
 <summary>Mostrar código</summary>
@@ -4863,7 +4863,7 @@ b2p =  22.57   kurtosis =  -1.27  with probability &lt;=  0.2</code></pre>
 </div>
 </div>
 </div>
-<p>Con el p-valor crudo, <code>body_mass_g</code> rechaza normalidad al 5% (<span class="math inline">\(p=0.0324\)</span>) — el único de los cuatro. Pero al corregir por los 4 tests simultáneos, ese rechazo desaparece (<span class="math inline">\(p_{Bonferroni}=0.1296\)</span>): tomando los cuatro tests en conjunto, no hay evidencia fuerte contra la normalidad univariada de ninguna variable.</p>
+<p>Con el p-valor crudo, <code>body_mass_g</code> rechaza normalidad al 5% (<span class="math inline">\(p=0.0324\)</span>), el único de los cuatro. Pero al corregir por los 4 tests simultáneos, ese rechazo desaparece (<span class="math inline">\(p_{Bonferroni}=0.1296\)</span>): tomando los cuatro tests en conjunto, no hay evidencia fuerte contra la normalidad univariada de ninguna variable.</p>
 <div class="cell">
 <details class="code-fold">
 <summary>Mostrar código</summary>
@@ -4884,7 +4884,7 @@ b2p =  22.57   kurtosis =  -1.27  with probability &lt;=  0.2</code></pre>
 </div>
 </div>
 </div>
-<p>Esto es consistente con el test de Mardia, que tampoco rechazó la normalidad multivariada — pero no conviene leerlo como “el mismo test dos veces”: Mardia y Shapiro tienen potencia distinta frente a distintos tipos de desvío de la normalidad (Shapiro es sensible a asimetría y colas de cada variable por separado; Mardia detecta desvíos en la forma conjunta, incluida la dependencia entre variables). Que ninguno de los dos rechace no es una casualidad lógica, sino dos evidencias independientes apuntando en la misma dirección.</p>
+<p>Esto es consistente con el test de Mardia, que tampoco rechazó la normalidad multivariada, pero no conviene leerlo como “el mismo test dos veces”: Mardia y Shapiro tienen potencia distinta frente a distintos tipos de desvío de la normalidad (Shapiro es sensible a asimetría y colas de cada variable por separado; Mardia detecta desvíos en la forma conjunta, incluida la dependencia entre variables). Que ninguno de los dos rechace no es una casualidad lógica, sino dos evidencias independientes apuntando en la misma dirección.</p>
 </div>
 </div>
 </div>
@@ -4900,7 +4900,7 @@ b2p =  22.57   kurtosis =  -1.27  with probability &lt;=  0.2</code></pre>
 </div>
 <div id="callout-9" class="callout-9-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p><code>MVN::mvn(data = Datos, mvn_test = &quot;mardia&quot;)</code> ofrece, además de Mardia, otros tests de normalidad multivariada (Henze-Zirkler, Royston, etc.) y gráficos de diagnóstico automáticos. Si comparan resultados entre compañeros: <code>MVN</code> aplica una corrección de muestra chica ligeramente distinta a la que usamos acá, así que el estadístico y el p-valor pueden diferir un poco de los calculados a mano o con <code>psych::mardia()</code> — la conclusión (se rechaza o no <span class="math inline">\(H_0\)</span>) coincide en la enorme mayoría de los casos, pero los números exactos no tienen por qué ser idénticos.</p>
+<p><code>MVN::mvn(data = Datos, mvn_test = &quot;mardia&quot;)</code> ofrece, además de Mardia, otros tests de normalidad multivariada (Henze-Zirkler, Royston, etc.) y gráficos de diagnóstico automáticos. Si comparan resultados entre compañeros: <code>MVN</code> aplica una corrección de muestra chica ligeramente distinta a la que usamos acá, así que el estadístico y el p-valor pueden diferir un poco de los calculados a mano o con <code>psych::mardia()</code>. La conclusión (se rechaza o no <span class="math inline">\(H_0\)</span>) coincide en la enorme mayoría de los casos, pero los números exactos no tienen por qué ser idénticos.</p>
 </div>
 </div>
 </div>
@@ -5054,13 +5054,13 @@ alternative hypothesis: true location is not equal to c(38.8,18.3,190,3700)</cod
 <summary>Mostrar código</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb73"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb73-1"><a href="#cb73-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (T2_dif <span class="sc">&gt;</span> T2_crit_2m) {</span>
 <span id="cb73-2"><a href="#cb73-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cat</span>(<span class="st">&quot;T² observado supera ampliamente al T² crítico: **se rechaza H0**. &quot;</span>,</span>
-<span id="cb73-3"><a href="#cb73-3" aria-hidden="true" tabindex="-1"></a>      <span class="st">&quot;Las especies Adelie y Chinstrap tienen vectores de medias morfológicas distintos — &quot;</span>,</span>
+<span id="cb73-3"><a href="#cb73-3" aria-hidden="true" tabindex="-1"></a>      <span class="st">&quot;Las especies Adelie y Chinstrap tienen vectores de medias morfológicas distintos, &quot;</span>,</span>
 <span id="cb73-4"><a href="#cb73-4" aria-hidden="true" tabindex="-1"></a>      <span class="st">&quot;resultado esperable, dado que son especies diferentes.&quot;</span>)</span>
 <span id="cb73-5"><a href="#cb73-5" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span> {</span>
 <span id="cb73-6"><a href="#cb73-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cat</span>(<span class="st">&quot;No se rechaza H0.&quot;</span>)</span>
 <span id="cb73-7"><a href="#cb73-7" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
-<p>T² observado supera ampliamente al T² crítico: <strong>se rechaza H0</strong>. Las especies Adelie y Chinstrap tienen vectores de medias morfológicas distintos — resultado esperable, dado que son especies diferentes.</p>
+<p>T² observado supera ampliamente al T² crítico: <strong>se rechaza H0</strong>. Las especies Adelie y Chinstrap tienen vectores de medias morfológicas distintos, resultado esperable, dado que son especies diferentes.</p>
 <p>Con <code>ICSNP::HotellingsT2()</code> llegamos al mismo resultado en una línea, con p-valor exacto:</p>
 <div class="cell">
 <details class="code-fold">
@@ -5079,7 +5079,7 @@ alternative hypothesis: true location difference is not equal to c(0,0,0,0)</cod
 </section>
 <section id="igualdad-de-matrices-de-covarianza-test-de-box-m" class="level2" data-number="8.3">
 <h2 data-number="8.3" class="anchored" data-anchor-id="igualdad-de-matrices-de-covarianza-test-de-box-m"><span class="header-section-number">8.3</span> Igualdad de matrices de covarianza (test de Box M)</h2>
-<p>Antes de comparar medias entre grupos muchas veces conviene chequear si sus matrices de covarianza son homogéneas — es un supuesto de varias técnicas (discriminante lineal, MANOVA). <span class="math inline">\(H_0: \Sigma_1 = \Sigma_2\)</span>.</p>
+<p>Antes de comparar medias entre grupos muchas veces conviene chequear si sus matrices de covarianza son homogéneas: es un supuesto de varias técnicas (discriminante lineal, MANOVA). <span class="math inline">\(H_0: \Sigma_1 = \Sigma_2\)</span>.</p>
 <div class="cell">
 <details class="code-fold">
 <summary>Mostrar código</summary>
@@ -5119,7 +5119,7 @@ alternative hypothesis: true location difference is not equal to c(0,0,0,0)</cod
 </div>
 </div>
 </div>
-<p>Con <code>biotools::boxM()</code> obtenemos el mismo test —basado en la aproximación chi-cuadrado del cociente de verosimilitud, ligeramente distinta a la aproximación F calculada arriba, pero equivalente en su conclusión— en una sola línea:</p>
+<p>Con <code>biotools::boxM()</code> obtenemos el mismo test (basado en la aproximación chi-cuadrado del cociente de verosimilitud, ligeramente distinta a la aproximación F calculada arriba, pero equivalente en su conclusión) en una sola línea:</p>
 <div class="cell">
 <details class="code-fold">
 <summary>Mostrar código</summary>
@@ -5134,7 +5134,7 @@ data:  select(filter(datos_completos, species %in% c(&quot;Adelie&quot;, &quot;C
 Chi-Sq (approx.) = 27.993, df = 10, p-value = 0.00181</code></pre>
 </div>
 </div>
-<p>En ambos casos el p-valor es prácticamente cero: <strong>se rechaza <span class="math inline">\(H_0\)</span></strong>. Las matrices de covarianza de Adelie y Chinstrap no son homogéneas — otra diferencia morfológica más entre las dos especies.</p>
+<p>En ambos casos el p-valor es prácticamente cero: <strong>se rechaza <span class="math inline">\(H_0\)</span></strong>. Las matrices de covarianza de Adelie y Chinstrap no son homogéneas, otra diferencia morfológica más entre las dos especies.</p>
 </section>
 </section>
 <section id="referencias" class="level1" data-number="9">
@@ -5632,7 +5632,7 @@ Chi-Sq (approx.) = 27.993, df = 10, p-value = 0.00181</code></pre>
 <span id="cb79-26"><a href="#cb79-26" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb79-27"><a href="#cb79-27" aria-hidden="true" tabindex="-1"></a><span class="fu"># Introducción</span></span>
 <span id="cb79-28"><a href="#cb79-28" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb79-29"><a href="#cb79-29" aria-hidden="true" tabindex="-1"></a>Este práctico acompaña a la clase teórica de la Unidad I y recorre las herramientas básicas del análisis descriptivo e inferencial multivariado: matrices de varianzas-covarianzas y correlación, medidas de variabilidad multivariada, distancias, evaluación del supuesto de normalidad multivariada, y los contrastes clásicos de medias y de matrices de covarianza ($T^2$ de Hotelling, test de Box M).</span>
+<span id="cb79-29"><a href="#cb79-29" aria-hidden="true" tabindex="-1"></a>Este práctico recorre las herramientas básicas del análisis descriptivo e inferencial multivariado: matrices de varianzas-covarianzas y correlación, medidas de variabilidad multivariada, distancias, evaluación del supuesto de normalidad multivariada, y los contrastes clásicos de medias y de matrices de covarianza ($T^2$ de Hotelling, test de Box M).</span>
 <span id="cb79-30"><a href="#cb79-30" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb79-31"><a href="#cb79-31" aria-hidden="true" tabindex="-1"></a><span class="fu">## El conjunto de datos: Palmer Penguins</span></span>
 <span id="cb79-32"><a href="#cb79-32" aria-hidden="true" tabindex="-1"></a></span>
@@ -5656,7 +5656,7 @@ Chi-Sq (approx.) = 27.993, df = 10, p-value = 0.00181</code></pre>
 <span id="cb79-50"><a href="#cb79-50" aria-hidden="true" tabindex="-1"></a><span class="co">::: {.callout-note}</span></span>
 <span id="cb79-51"><a href="#cb79-51" aria-hidden="true" tabindex="-1"></a><span class="co">## Sobre el ejemplo clásico de la bibliografía: los alcornoques</span></span>
 <span id="cb79-52"><a href="#cb79-52" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb79-53"><a href="#cb79-53" aria-hidden="true" tabindex="-1"></a><span class="co">El ejemplo que seguramente encuentren en la bibliografía del curso (Peña, *Análisis de Datos Multivariantes*; Cuadras, *Nuevos Métodos de Análisis Multivariante*) es el de los **alcornoques** (*cork data*), publicado originalmente por Rao (1948). Mide, en 28 alcornoques (*Quercus suber*), el depósito de corcho (en centigramos) en las cuatro direcciones cardinales (N, E, S, O), con el objetivo de responder si el grosor del corcho varía sistemáticamente según la orientación del árbol. Es *el* ejemplo canónico para introducir los contrastes multivariados de una muestra, y vale la pena conocerlo — pero para este práctico usamos Palmer Penguins por tratarse de un conjunto de datos más grande, con grupos naturales y de uso extendido en la enseñanza actual.</span></span>
+<span id="cb79-53"><a href="#cb79-53" aria-hidden="true" tabindex="-1"></a><span class="co">El ejemplo que seguramente encuentren en la bibliografía del curso (Peña, *Análisis de Datos Multivariantes*; Cuadras, *Nuevos Métodos de Análisis Multivariante*) es el de los **alcornoques** (*cork data*), publicado originalmente por Rao (1948). Mide, en 28 alcornoques (*Quercus suber*), el depósito de corcho (en centigramos) en las cuatro direcciones cardinales (N, E, S, O), con el objetivo de responder si el grosor del corcho varía sistemáticamente según la orientación del árbol. Es *el* ejemplo canónico para introducir los contrastes multivariados de una muestra, y vale la pena conocerlo, pero para este práctico usamos Palmer Penguins por tratarse de un conjunto de datos más grande, con grupos naturales y de uso extendido en la enseñanza actual.</span></span>
 <span id="cb79-54"><a href="#cb79-54" aria-hidden="true" tabindex="-1"></a><span class="co">:::</span></span>
 <span id="cb79-55"><a href="#cb79-55" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb79-56"><a href="#cb79-56" aria-hidden="true" tabindex="-1"></a><span class="co"> --&gt;</span></span>
@@ -5668,7 +5668,7 @@ Chi-Sq (approx.) = 27.993, df = 10, p-value = 0.00181</code></pre>
 <span id="cb79-62"><a href="#cb79-62" aria-hidden="true" tabindex="-1"></a>repositorio de la materia:</span>
 <span id="cb79-63"><a href="#cb79-63" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb79-64"><a href="#cb79-64" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="co">[</span><span class="ot">Descargar `Unidad1_practico.R`</span><span class="co">](https://raw.githubusercontent.com/pabort/MAE-Multivariado/main/Unidad1_practico.R)</span></span>
-<span id="cb79-65"><a href="#cb79-65" aria-hidden="true" tabindex="-1"></a>  — clic derecho → &quot;Guardar enlace como…&quot;</span>
+<span id="cb79-65"><a href="#cb79-65" aria-hidden="true" tabindex="-1"></a>  (clic derecho → &quot;Guardar enlace como…&quot;)</span>
 <span id="cb79-66"><a href="#cb79-66" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="co">[</span><span class="ot">Ver el repositorio completo</span><span class="co">](https://github.com/pabort/MAE-Multivariado)</span></span>
 <span id="cb79-67"><a href="#cb79-67" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb79-68"><a href="#cb79-68" aria-hidden="true" tabindex="-1"></a>El script está organizado en las mismas secciones que este documento,</span>
@@ -5677,7 +5677,7 @@ Chi-Sq (approx.) = 27.993, df = 10, p-value = 0.00181</code></pre>
 <span id="cb79-71"><a href="#cb79-71" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb79-72"><a href="#cb79-72" aria-hidden="true" tabindex="-1"></a><span class="fu"># Carga de paquetes y datos</span></span>
 <span id="cb79-73"><a href="#cb79-73" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb79-74"><a href="#cb79-74" aria-hidden="true" tabindex="-1"></a>Importante: el paquete <span class="in">`biotools`</span> carga a su vez <span class="in">`MASS`</span>, cuya función <span class="in">`select()`</span> **enmascara** a <span class="in">`dplyr::select()`</span>. Por eso cargamos <span class="in">`tidyverse`</span> en último lugar — así sus funciones (<span class="in">`select()`</span>, <span class="in">`filter()`</span>, etc.) quedan disponibles sin tener que escribir <span class="in">`dplyr::select()`</span> en cada uso.</span>
+<span id="cb79-74"><a href="#cb79-74" aria-hidden="true" tabindex="-1"></a>Importante: el paquete <span class="in">`biotools`</span> carga a su vez <span class="in">`MASS`</span>, cuya función <span class="in">`select()`</span> **enmascara** a <span class="in">`dplyr::select()`</span>. Por eso cargamos <span class="in">`tidyverse`</span> en último lugar: así sus funciones (<span class="in">`select()`</span>, <span class="in">`filter()`</span>, etc.) quedan disponibles sin tener que escribir <span class="in">`dplyr::select()`</span> en cada uso.</span>
 <span id="cb79-75"><a href="#cb79-75" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb79-78"><a href="#cb79-78" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
 <span id="cb79-79"><a href="#cb79-79" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: setup</span></span>
@@ -5790,7 +5790,7 @@ Chi-Sq (approx.) = 27.993, df = 10, p-value = 0.00181</code></pre>
 <span id="cb79-198"><a href="#cb79-198" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">exceso =</span> curtosis <span class="sc">-</span> <span class="dv">3</span>)</span>
 <span id="cb79-199"><a href="#cb79-199" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb79-200"><a href="#cb79-200" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb79-201"><a href="#cb79-201" aria-hidden="true" tabindex="-1"></a><span class="in">`body_mass_g`</span> es la que más se aleja de la normal, con el exceso más negativo ($-0.594$): es platicúrtica, con colas más livianas que una normal. Tiene sentido biológico — la masa corporal de un pingüino está acotada (no hay individuos infinitamente livianos ni pesados dentro de una especie), lo que comprime las colas de la distribución respecto de lo que predeciría una normal.</span>
+<span id="cb79-201"><a href="#cb79-201" aria-hidden="true" tabindex="-1"></a><span class="in">`body_mass_g`</span> es la que más se aleja de la normal, con el exceso más negativo ($-0.594$): es platicúrtica, con colas más livianas que una normal. Tiene sentido biológico: la masa corporal de un pingüino está acotada (no hay individuos infinitamente livianos ni pesados dentro de una especie), lo que comprime las colas de la distribución respecto de lo que predeciría una normal.</span>
 <span id="cb79-202"><a href="#cb79-202" aria-hidden="true" tabindex="-1"></a>:::</span>
 <span id="cb79-203"><a href="#cb79-203" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb79-204"><a href="#cb79-204" aria-hidden="true" tabindex="-1"></a><span class="fu">### Comparación entre especies</span></span>
@@ -5826,7 +5826,7 @@ Chi-Sq (approx.) = 27.993, df = 10, p-value = 0.00181</code></pre>
 <span id="cb79-238"><a href="#cb79-238" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="cn">NULL</span>, <span class="at">y =</span> <span class="cn">NULL</span>, <span class="at">fill =</span> <span class="st">&quot;Especie&quot;</span>)</span>
 <span id="cb79-239"><a href="#cb79-239" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb79-240"><a href="#cb79-240" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb79-241"><a href="#cb79-241" aria-hidden="true" tabindex="-1"></a>Ya a nivel univariado se nota que Gentoo se separa bastante del resto (aleta y masa corporal más grandes, pico más angosto) — una primera pista de que el análisis multivariado más adelante va a encontrar diferencias claras entre grupos.</span>
+<span id="cb79-241"><a href="#cb79-241" aria-hidden="true" tabindex="-1"></a>Ya a nivel univariado se nota que Gentoo se separa bastante del resto (aleta y masa corporal más grandes, pico más angosto), una primera pista de que el análisis multivariado más adelante va a encontrar diferencias claras entre grupos.</span>
 <span id="cb79-242"><a href="#cb79-242" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb79-243"><a href="#cb79-243" aria-hidden="true" tabindex="-1"></a><span class="fu">## Matrices de covarianza y correlación</span></span>
 <span id="cb79-244"><a href="#cb79-244" aria-hidden="true" tabindex="-1"></a></span>
@@ -5860,8 +5860,8 @@ Chi-Sq (approx.) = 27.993, df = 10, p-value = 0.00181</code></pre>
 <span id="cb79-276"><a href="#cb79-276" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb79-277"><a href="#cb79-277" aria-hidden="true" tabindex="-1"></a>Cuando hay más de una variable, un único número no alcanza para resumir &quot;cuánto varían los datos en conjunto&quot;. Algunas medidas usuales:</span>
 <span id="cb79-278"><a href="#cb79-278" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb79-279"><a href="#cb79-279" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Varianza total**: la traza de $S$ — la suma de las varianzas individuales, sin tener en cuenta la correlación entre variables.</span>
-<span id="cb79-280"><a href="#cb79-280" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Varianza generalizada**: el determinante de $S$ — puede interpretarse como el volumen del elipsoide de dispersión de los datos. Si las variables están muy correlacionadas, el elipsoide es &quot;aplanado&quot; y la varianza generalizada es chica, aun cuando las varianzas individuales sean grandes.</span>
+<span id="cb79-279"><a href="#cb79-279" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Varianza total**: la traza de $S$, la suma de las varianzas individuales, sin tener en cuenta la correlación entre variables.</span>
+<span id="cb79-280"><a href="#cb79-280" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Varianza generalizada**: el determinante de $S$, que puede interpretarse como el volumen del elipsoide de dispersión de los datos. Si las variables están muy correlacionadas, el elipsoide es &quot;aplanado&quot; y la varianza generalizada es chica, aun cuando las varianzas individuales sean grandes.</span>
 <span id="cb79-281"><a href="#cb79-281" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Varianza efectiva**: $|S|^{1/p}$, una forma de &quot;promediar&quot; la varianza generalizada en la escala original de las variables.</span>
 <span id="cb79-282"><a href="#cb79-282" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Coeficiente de dependencia efectiva**: mide, en una escala de 0 a 1, cuán fuerte es la dependencia lineal conjunta entre las variables.</span>
 <span id="cb79-283"><a href="#cb79-283" aria-hidden="true" tabindex="-1"></a></span>
@@ -5887,7 +5887,7 @@ Chi-Sq (approx.) = 27.993, df = 10, p-value = 0.00181</code></pre>
 <span id="cb79-305"><a href="#cb79-305" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb79-306"><a href="#cb79-306" aria-hidden="true" tabindex="-1"></a><span class="fu">### Comparación entre especies</span></span>
 <span id="cb79-307"><a href="#cb79-307" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb79-308"><a href="#cb79-308" aria-hidden="true" tabindex="-1"></a>Repitiendo estos cálculos para cada especie por separado, se puede comparar cómo varía —en conjunto— la morfología de cada grupo:</span>
+<span id="cb79-308"><a href="#cb79-308" aria-hidden="true" tabindex="-1"></a>Repitiendo estos cálculos para cada especie por separado, se puede comparar cómo varía (en conjunto) la morfología de cada grupo:</span>
 <span id="cb79-309"><a href="#cb79-309" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb79-312"><a href="#cb79-312" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
 <span id="cb79-313"><a href="#cb79-313" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: variabilidad-por-especie</span></span>
@@ -5910,11 +5910,11 @@ Chi-Sq (approx.) = 27.993, df = 10, p-value = 0.00181</code></pre>
 <span id="cb79-330"><a href="#cb79-330" aria-hidden="true" tabindex="-1"></a>  })</span>
 <span id="cb79-331"><a href="#cb79-331" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb79-332"><a href="#cb79-332" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb79-333"><a href="#cb79-333" aria-hidden="true" tabindex="-1"></a>Un resultado interesante: Gentoo tiene la **varianza total** más alta de las tres especies (son los pingüinos más grandes, con más variabilidad en masa corporal), pero la **varianza generalizada** más baja. La razón está en la última columna: Gentoo también tiene la **dependencia efectiva** más alta — sus 4 variables están más correlacionadas entre sí que en Adelie, así que buena parte de la variabilidad de una variable ya está &quot;contenida&quot; en las otras. El elipsoide de dispersión de Gentoo es más aplanado (más redundancia, menos variabilidad genuinamente multivariada), aunque cada variable por separado varíe bastante. Es un buen ejemplo de por qué la varianza total (que ignora la correlación) puede llevar a una conclusión distinta que la varianza generalizada (que sí la tiene en cuenta).</span>
+<span id="cb79-333"><a href="#cb79-333" aria-hidden="true" tabindex="-1"></a>Un resultado interesante: Gentoo tiene la **varianza total** más alta de las tres especies (son los pingüinos más grandes, con más variabilidad en masa corporal), pero la **varianza generalizada** más baja. La razón está en la última columna: Gentoo también tiene la **dependencia efectiva** más alta. Sus 4 variables están más correlacionadas entre sí que en Adelie, así que buena parte de la variabilidad de una variable ya está &quot;contenida&quot; en las otras. El elipsoide de dispersión de Gentoo es más aplanado (más redundancia, menos variabilidad genuinamente multivariada), aunque cada variable por separado varíe bastante. Es un buen ejemplo de por qué la varianza total (que ignora la correlación) puede llevar a una conclusión distinta que la varianza generalizada (que sí la tiene en cuenta).</span>
 <span id="cb79-334"><a href="#cb79-334" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb79-335"><a href="#cb79-335" aria-hidden="true" tabindex="-1"></a>La **correlación parcial** entre dos variables mide su asociación *controlando* el efecto del resto — a diferencia de la correlación simple, que puede estar &quot;inflada&quot; por variables en común.</span>
+<span id="cb79-335"><a href="#cb79-335" aria-hidden="true" tabindex="-1"></a>La **correlación parcial** entre dos variables mide su asociación *controlando* el efecto del resto, a diferencia de la correlación simple, que puede estar &quot;inflada&quot; por variables en común.</span>
 <span id="cb79-336"><a href="#cb79-336" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb79-337"><a href="#cb79-337" aria-hidden="true" tabindex="-1"></a>Se calcula a partir de la **matriz de precisión** $S^{-1}$ (la inversa de la matriz de covarianzas), que tiene una interpretación propia: cada fila contiene los coeficientes de la regresión múltiple de esa variable contra el resto (con el signo cambiado y ponderados por la varianza residual), y su diagonal son las inversas de esas varianzas residuales. Siguiendo la notación de la teórica:</span>
+<span id="cb79-337"><a href="#cb79-337" aria-hidden="true" tabindex="-1"></a>Se calcula a partir de la **matriz de precisión** $S^{-1}$ (la inversa de la matriz de covarianzas), que tiene una interpretación propia: cada fila contiene los coeficientes de la regresión múltiple de esa variable contra el resto (con el signo cambiado y ponderados por la varianza residual), y su diagonal son las inversas de esas varianzas residuales:</span>
 <span id="cb79-338"><a href="#cb79-338" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb79-339"><a href="#cb79-339" aria-hidden="true" tabindex="-1"></a>$$R_p = (-1)_{diag} \; \text{diag}(S^{-1})^{-1/2} \; S^{-1} \; \text{diag}(S^{-1})^{-1/2}$$</span>
 <span id="cb79-340"><a href="#cb79-340" aria-hidden="true" tabindex="-1"></a></span>
@@ -6097,7 +6097,7 @@ Chi-Sq (approx.) = 27.993, df = 10, p-value = 0.00181</code></pre>
 <span id="cb79-537"><a href="#cb79-537" aria-hidden="true" tabindex="-1"></a>)</span>
 <span id="cb79-538"><a href="#cb79-538" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb79-539"><a href="#cb79-539" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb79-540"><a href="#cb79-540" aria-hidden="true" tabindex="-1"></a>Casi toda la variabilidad —el 99.98%— queda concentrada en la primera dirección. Antes de leer esto como que los datos son &quot;casi unidimensionales&quot;, conviene mirar en qué escala está cada variable: <span class="in">`body_mass_g`</span> se mide en gramos (varianza en el orden de los miles), mientras que las otras tres están en milímetros (varianza en el orden de las unidades o decenas). Sobre la matriz de covarianzas $S$ sin estandarizar, la variable de mayor escala domina: la primera &quot;dirección de máxima variabilidad&quot; termina siendo, en la práctica, casi exclusivamente <span class="in">`body_mass_g`</span>. Es el error clásico al recién empezar con componentes principales — trabajar sobre $S$ sin preguntarse antes si las variables están en unidades comparables. La sección siguiente, sobre estandarización multivariante, es justamente la forma de evitarlo.</span>
+<span id="cb79-540"><a href="#cb79-540" aria-hidden="true" tabindex="-1"></a>Casi toda la variabilidad (el 99.98%) queda concentrada en la primera dirección. Antes de leer esto como que los datos son &quot;casi unidimensionales&quot;, conviene mirar en qué escala está cada variable: <span class="in">`body_mass_g`</span> se mide en gramos (varianza en el orden de los miles), mientras que las otras tres están en milímetros (varianza en el orden de las unidades o decenas). Sobre la matriz de covarianzas $S$ sin estandarizar, la variable de mayor escala domina: la primera &quot;dirección de máxima variabilidad&quot; termina siendo, en la práctica, casi exclusivamente <span class="in">`body_mass_g`</span>. Es el error clásico al recién empezar con componentes principales: trabajar sobre $S$ sin preguntarse antes si las variables están en unidades comparables. La sección siguiente, sobre estandarización multivariante, es justamente la forma de evitarlo.</span>
 <span id="cb79-541"><a href="#cb79-541" aria-hidden="true" tabindex="-1"></a>:::</span>
 <span id="cb79-542"><a href="#cb79-542" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb79-543"><a href="#cb79-543" aria-hidden="true" tabindex="-1"></a><span class="fu">## Estandarización multivariante</span></span>
@@ -6122,7 +6122,7 @@ Chi-Sq (approx.) = 27.993, df = 10, p-value = 0.00181</code></pre>
 <span id="cb79-564"><a href="#cb79-564" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb79-565"><a href="#cb79-565" aria-hidden="true" tabindex="-1"></a>La transformación $Y_M = \tilde{X}\,U\Lambda^{-1/2}U&#39;$ no es una fórmula arbitraria: es, precisamente, la que hace que la distancia euclídea entre observaciones estandarizadas sea la distancia de Mahalanobis entre las observaciones originales.</span>
 <span id="cb79-566"><a href="#cb79-566" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb79-567"><a href="#cb79-567" aria-hidden="true" tabindex="-1"></a>La matriz $S^{-1/2} = U\Lambda^{-1/2}U&#39;$ cumple $S^{-1/2}S^{-1/2} = S^{-1}$ —es, literalmente, la raíz cuadrada de $S^{-1}$—, así que la forma cuadrática de Mahalanobis se puede reescribir como una norma al cuadrado:</span>
+<span id="cb79-567"><a href="#cb79-567" aria-hidden="true" tabindex="-1"></a>La matriz $S^{-1/2} = U\Lambda^{-1/2}U&#39;$ cumple $S^{-1/2}S^{-1/2} = S^{-1}$ (es, literalmente, la raíz cuadrada de $S^{-1}$), así que la forma cuadrática de Mahalanobis se puede reescribir como una norma al cuadrado:</span>
 <span id="cb79-568"><a href="#cb79-568" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb79-569"><a href="#cb79-569" aria-hidden="true" tabindex="-1"></a>$$d_M^2(x_i, \bar{x}) = (x_i-\bar{x})&#39;S^{-1}(x_i-\bar{x}) = (x_i-\bar{x})&#39;S^{-1/2}S^{-1/2}(x_i-\bar{x}) = \left<span class="sc">\|</span>S^{-1/2}(x_i-\bar{x})\right<span class="sc">\|</span>^2$$</span>
 <span id="cb79-570"><a href="#cb79-570" aria-hidden="true" tabindex="-1"></a></span>
@@ -6139,7 +6139,7 @@ Chi-Sq (approx.) = 27.993, df = 10, p-value = 0.00181</code></pre>
 <span id="cb79-583"><a href="#cb79-583" aria-hidden="true" tabindex="-1"></a><span class="fu">max</span>(<span class="fu">abs</span>(dist_euclidea_YM <span class="sc">-</span> dist_mahalanobis_X))</span>
 <span id="cb79-584"><a href="#cb79-584" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb79-585"><a href="#cb79-585" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb79-586"><a href="#cb79-586" aria-hidden="true" tabindex="-1"></a>Es lo que le da sentido a la estandarización multivariante más allá de &quot;dejar la covarianza en identidad&quot;: trabajar con $Y_M$ en vez de $X$ convierte cualquier distancia euclídea —por ejemplo, la que usan los métodos de conglomerados de la Unidad 3— en una distancia de Mahalanobis sobre los datos originales, sin tener que cargar con $S^{-1}$ en cada cálculo.</span>
+<span id="cb79-586"><a href="#cb79-586" aria-hidden="true" tabindex="-1"></a>Es lo que le da sentido a la estandarización multivariante más allá de &quot;dejar la covarianza en identidad&quot;: trabajar con $Y_M$ en vez de $X$ convierte cualquier distancia euclídea (por ejemplo, la que usan los métodos de conglomerados de la Unidad 3) en una distancia de Mahalanobis sobre los datos originales, sin tener que cargar con $S^{-1}$ en cada cálculo.</span>
 <span id="cb79-587"><a href="#cb79-587" aria-hidden="true" tabindex="-1"></a>:::</span>
 <span id="cb79-588"><a href="#cb79-588" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb79-589"><a href="#cb79-589" aria-hidden="true" tabindex="-1"></a><span class="fu"># Distancias multivariadas</span></span>
@@ -6227,7 +6227,7 @@ Chi-Sq (approx.) = 27.993, df = 10, p-value = 0.00181</code></pre>
 <span id="cb79-681"><a href="#cb79-681" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb79-682"><a href="#cb79-682" aria-hidden="true" tabindex="-1"></a><span class="fu"># Asimetría y curtosis multivariada</span></span>
 <span id="cb79-683"><a href="#cb79-683" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb79-684"><a href="#cb79-684" aria-hidden="true" tabindex="-1"></a>Los coeficientes de Mardia generalizan la asimetría y la curtosis al caso multivariado. Bajo normalidad multivariada, ambos estadísticos siguen distribuciones conocidas (aproximadamente $\chi^2$ la asimetría, normal estandarizada la curtosis), lo que permite construir un test formal de normalidad — que retomamos en la próxima sección.</span>
+<span id="cb79-684"><a href="#cb79-684" aria-hidden="true" tabindex="-1"></a>Los coeficientes de Mardia generalizan la asimetría y la curtosis al caso multivariado. Bajo normalidad multivariada, ambos estadísticos siguen distribuciones conocidas (aproximadamente $\chi^2$ la asimetría, normal estandarizada la curtosis), lo que permite construir un test formal de normalidad, que retomamos en la próxima sección.</span>
 <span id="cb79-685"><a href="#cb79-685" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb79-688"><a href="#cb79-688" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
 <span id="cb79-689"><a href="#cb79-689" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: mardia-manual</span></span>
@@ -6260,7 +6260,7 @@ Chi-Sq (approx.) = 27.993, df = 10, p-value = 0.00181</code></pre>
 <span id="cb79-718"><a href="#cb79-718" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Matriz de dispersión — Pingüinos Adelie&quot;</span>)</span>
 <span id="cb79-719"><a href="#cb79-719" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb79-720"><a href="#cb79-720" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb79-721"><a href="#cb79-721" aria-hidden="true" tabindex="-1"></a>Si comparamos las tres especies a la vez, el mismo gráfico muestra claramente la separación entre grupos — algo que vamos a retomar en la sección de inferencia:</span>
+<span id="cb79-721"><a href="#cb79-721" aria-hidden="true" tabindex="-1"></a>Si comparamos las tres especies a la vez, el mismo gráfico muestra claramente la separación entre grupos, algo que vamos a retomar en la sección de inferencia:</span>
 <span id="cb79-722"><a href="#cb79-722" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb79-725"><a href="#cb79-725" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
 <span id="cb79-726"><a href="#cb79-726" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: ggpairs-especies</span></span>
@@ -6416,7 +6416,7 @@ Chi-Sq (approx.) = 27.993, df = 10, p-value = 0.00181</code></pre>
 <span id="cb79-892"><a href="#cb79-892" aria-hidden="true" tabindex="-1"></a>::: {.callout-note collapse=&quot;true&quot;}</span>
 <span id="cb79-893"><a href="#cb79-893" aria-hidden="true" tabindex="-1"></a><span class="fu">## Shapiro-Wilk univariado, con corrección por tests múltiples</span></span>
 <span id="cb79-894"><a href="#cb79-894" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb79-895"><a href="#cb79-895" aria-hidden="true" tabindex="-1"></a>La normalidad multivariada implica que las 4 marginales sean normales, pero la implicación no vale al revés: que cada variable sea normal por separado no garantiza que el vector conjunto lo sea. Aun así, es un chequeo complementario razonable. Hacerlo variable por variable expone un problema propio: al correr $p=4$ tests simultáneos, la probabilidad de al menos un rechazo falso queda por encima del 5% nominal de cada test individual, así que conviene corregir por comparaciones múltiples — acá, con Bonferroni (multiplicar cada p-valor por $p$).</span>
+<span id="cb79-895"><a href="#cb79-895" aria-hidden="true" tabindex="-1"></a>La normalidad multivariada implica que las 4 marginales sean normales, pero la implicación no vale al revés: que cada variable sea normal por separado no garantiza que el vector conjunto lo sea. Aun así, es un chequeo complementario razonable. Hacerlo variable por variable expone un problema propio: al correr $p=4$ tests simultáneos, la probabilidad de al menos un rechazo falso queda por encima del 5% nominal de cada test individual, así que conviene corregir por comparaciones múltiples: acá, con Bonferroni (multiplicar cada p-valor por $p$).</span>
 <span id="cb79-896"><a href="#cb79-896" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb79-899"><a href="#cb79-899" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
 <span id="cb79-900"><a href="#cb79-900" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: shapiro-univariado</span></span>
@@ -6429,7 +6429,7 @@ Chi-Sq (approx.) = 27.993, df = 10, p-value = 0.00181</code></pre>
 <span id="cb79-907"><a href="#cb79-907" aria-hidden="true" tabindex="-1"></a>shapiro_univariado</span>
 <span id="cb79-908"><a href="#cb79-908" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb79-909"><a href="#cb79-909" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb79-910"><a href="#cb79-910" aria-hidden="true" tabindex="-1"></a>Con el p-valor crudo, <span class="in">`body_mass_g`</span> rechaza normalidad al 5% ($p=0.0324$) — el único de los cuatro. Pero al corregir por los 4 tests simultáneos, ese rechazo desaparece ($p_{Bonferroni}=0.1296$): tomando los cuatro tests en conjunto, no hay evidencia fuerte contra la normalidad univariada de ninguna variable.</span>
+<span id="cb79-910"><a href="#cb79-910" aria-hidden="true" tabindex="-1"></a>Con el p-valor crudo, <span class="in">`body_mass_g`</span> rechaza normalidad al 5% ($p=0.0324$), el único de los cuatro. Pero al corregir por los 4 tests simultáneos, ese rechazo desaparece ($p_{Bonferroni}=0.1296$): tomando los cuatro tests en conjunto, no hay evidencia fuerte contra la normalidad univariada de ninguna variable.</span>
 <span id="cb79-911"><a href="#cb79-911" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb79-914"><a href="#cb79-914" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
 <span id="cb79-915"><a href="#cb79-915" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: verificacion-shapiro-bonferroni</span></span>
@@ -6444,13 +6444,13 @@ Chi-Sq (approx.) = 27.993, df = 10, p-value = 0.00181</code></pre>
 <span id="cb79-924"><a href="#cb79-924" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(variable, p_valor_bonferroni, recalculado)</span>
 <span id="cb79-925"><a href="#cb79-925" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb79-926"><a href="#cb79-926" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb79-927"><a href="#cb79-927" aria-hidden="true" tabindex="-1"></a>Esto es consistente con el test de Mardia, que tampoco rechazó la normalidad multivariada — pero no conviene leerlo como &quot;el mismo test dos veces&quot;: Mardia y Shapiro tienen potencia distinta frente a distintos tipos de desvío de la normalidad (Shapiro es sensible a asimetría y colas de cada variable por separado; Mardia detecta desvíos en la forma conjunta, incluida la dependencia entre variables). Que ninguno de los dos rechace no es una casualidad lógica, sino dos evidencias independientes apuntando en la misma dirección.</span>
+<span id="cb79-927"><a href="#cb79-927" aria-hidden="true" tabindex="-1"></a>Esto es consistente con el test de Mardia, que tampoco rechazó la normalidad multivariada, pero no conviene leerlo como &quot;el mismo test dos veces&quot;: Mardia y Shapiro tienen potencia distinta frente a distintos tipos de desvío de la normalidad (Shapiro es sensible a asimetría y colas de cada variable por separado; Mardia detecta desvíos en la forma conjunta, incluida la dependencia entre variables). Que ninguno de los dos rechace no es una casualidad lógica, sino dos evidencias independientes apuntando en la misma dirección.</span>
 <span id="cb79-928"><a href="#cb79-928" aria-hidden="true" tabindex="-1"></a>:::</span>
 <span id="cb79-929"><a href="#cb79-929" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb79-930"><a href="#cb79-930" aria-hidden="true" tabindex="-1"></a>::: {.callout-note collapse=&quot;true&quot;}</span>
 <span id="cb79-931"><a href="#cb79-931" aria-hidden="true" tabindex="-1"></a><span class="fu">## Alternativa: el paquete `MVN`</span></span>
 <span id="cb79-932"><a href="#cb79-932" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb79-933"><a href="#cb79-933" aria-hidden="true" tabindex="-1"></a><span class="in">`MVN::mvn(data = Datos, mvn_test = &quot;mardia&quot;)`</span> ofrece, además de Mardia, otros tests de normalidad multivariada (Henze-Zirkler, Royston, etc.) y gráficos de diagnóstico automáticos. Si comparan resultados entre compañeros: <span class="in">`MVN`</span> aplica una corrección de muestra chica ligeramente distinta a la que usamos acá, así que el estadístico y el p-valor pueden diferir un poco de los calculados a mano o con <span class="in">`psych::mardia()`</span> — la conclusión (se rechaza o no $H_0$) coincide en la enorme mayoría de los casos, pero los números exactos no tienen por qué ser idénticos.</span>
+<span id="cb79-933"><a href="#cb79-933" aria-hidden="true" tabindex="-1"></a><span class="in">`MVN::mvn(data = Datos, mvn_test = &quot;mardia&quot;)`</span> ofrece, además de Mardia, otros tests de normalidad multivariada (Henze-Zirkler, Royston, etc.) y gráficos de diagnóstico automáticos. Si comparan resultados entre compañeros: <span class="in">`MVN`</span> aplica una corrección de muestra chica ligeramente distinta a la que usamos acá, así que el estadístico y el p-valor pueden diferir un poco de los calculados a mano o con <span class="in">`psych::mardia()`</span>. La conclusión (se rechaza o no $H_0$) coincide en la enorme mayoría de los casos, pero los números exactos no tienen por qué ser idénticos.</span>
 <span id="cb79-934"><a href="#cb79-934" aria-hidden="true" tabindex="-1"></a>:::</span>
 <span id="cb79-935"><a href="#cb79-935" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb79-936"><a href="#cb79-936" aria-hidden="true" tabindex="-1"></a><span class="fu"># Inferencia multivariada</span></span>
@@ -6573,7 +6573,7 @@ Chi-Sq (approx.) = 27.993, df = 10, p-value = 0.00181</code></pre>
 <span id="cb79-1067"><a href="#cb79-1067" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb79-1068"><a href="#cb79-1068" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (T2_dif <span class="sc">&gt;</span> T2_crit_2m) {</span>
 <span id="cb79-1069"><a href="#cb79-1069" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cat</span>(<span class="st">&quot;T² observado supera ampliamente al T² crítico: **se rechaza H0**. &quot;</span>,</span>
-<span id="cb79-1070"><a href="#cb79-1070" aria-hidden="true" tabindex="-1"></a>      <span class="st">&quot;Las especies Adelie y Chinstrap tienen vectores de medias morfológicas distintos — &quot;</span>,</span>
+<span id="cb79-1070"><a href="#cb79-1070" aria-hidden="true" tabindex="-1"></a>      <span class="st">&quot;Las especies Adelie y Chinstrap tienen vectores de medias morfológicas distintos, &quot;</span>,</span>
 <span id="cb79-1071"><a href="#cb79-1071" aria-hidden="true" tabindex="-1"></a>      <span class="st">&quot;resultado esperable, dado que son especies diferentes.&quot;</span>)</span>
 <span id="cb79-1072"><a href="#cb79-1072" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span> {</span>
 <span id="cb79-1073"><a href="#cb79-1073" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cat</span>(<span class="st">&quot;No se rechaza H0.&quot;</span>)</span>
@@ -6590,7 +6590,7 @@ Chi-Sq (approx.) = 27.993, df = 10, p-value = 0.00181</code></pre>
 <span id="cb79-1086"><a href="#cb79-1086" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb79-1087"><a href="#cb79-1087" aria-hidden="true" tabindex="-1"></a><span class="fu">## Igualdad de matrices de covarianza (test de Box M)</span></span>
 <span id="cb79-1088"><a href="#cb79-1088" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb79-1089"><a href="#cb79-1089" aria-hidden="true" tabindex="-1"></a>Antes de comparar medias entre grupos muchas veces conviene chequear si sus matrices de covarianza son homogéneas — es un supuesto de varias técnicas (discriminante lineal, MANOVA). $H_0: \Sigma_1 = \Sigma_2$.</span>
+<span id="cb79-1089"><a href="#cb79-1089" aria-hidden="true" tabindex="-1"></a>Antes de comparar medias entre grupos muchas veces conviene chequear si sus matrices de covarianza son homogéneas: es un supuesto de varias técnicas (discriminante lineal, MANOVA). $H_0: \Sigma_1 = \Sigma_2$.</span>
 <span id="cb79-1090"><a href="#cb79-1090" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb79-1093"><a href="#cb79-1093" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
 <span id="cb79-1094"><a href="#cb79-1094" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: box-m-manual</span></span>
@@ -6624,7 +6624,7 @@ Chi-Sq (approx.) = 27.993, df = 10, p-value = 0.00181</code></pre>
 <span id="cb79-1122"><a href="#cb79-1122" aria-hidden="true" tabindex="-1"></a>       <span class="at">valor =</span> <span class="fu">c</span>(FBoxM, F_crit_box, p_valor_box))</span>
 <span id="cb79-1123"><a href="#cb79-1123" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb79-1124"><a href="#cb79-1124" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb79-1125"><a href="#cb79-1125" aria-hidden="true" tabindex="-1"></a>Con <span class="in">`biotools::boxM()`</span> obtenemos el mismo test —basado en la aproximación chi-cuadrado del cociente de verosimilitud, ligeramente distinta a la aproximación F calculada arriba, pero equivalente en su conclusión— en una sola línea:</span>
+<span id="cb79-1125"><a href="#cb79-1125" aria-hidden="true" tabindex="-1"></a>Con <span class="in">`biotools::boxM()`</span> obtenemos el mismo test (basado en la aproximación chi-cuadrado del cociente de verosimilitud, ligeramente distinta a la aproximación F calculada arriba, pero equivalente en su conclusión) en una sola línea:</span>
 <span id="cb79-1126"><a href="#cb79-1126" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb79-1129"><a href="#cb79-1129" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
 <span id="cb79-1130"><a href="#cb79-1130" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: box-m-biotools</span></span>
@@ -6633,7 +6633,7 @@ Chi-Sq (approx.) = 27.993, df = 10, p-value = 0.00181</code></pre>
 <span id="cb79-1133"><a href="#cb79-1133" aria-hidden="true" tabindex="-1"></a>     datos_completos <span class="sc">|&gt;</span> <span class="fu">filter</span>(species <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;Adelie&quot;</span>, <span class="st">&quot;Chinstrap&quot;</span>)) <span class="sc">|&gt;</span> <span class="fu">pull</span>(species))</span>
 <span id="cb79-1134"><a href="#cb79-1134" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb79-1135"><a href="#cb79-1135" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb79-1136"><a href="#cb79-1136" aria-hidden="true" tabindex="-1"></a>En ambos casos el p-valor es prácticamente cero: **se rechaza $H_0$**. Las matrices de covarianza de Adelie y Chinstrap no son homogéneas — otra diferencia morfológica más entre las dos especies.</span>
+<span id="cb79-1136"><a href="#cb79-1136" aria-hidden="true" tabindex="-1"></a>En ambos casos el p-valor es prácticamente cero: **se rechaza $H_0$**. Las matrices de covarianza de Adelie y Chinstrap no son homogéneas, otra diferencia morfológica más entre las dos especies.</span>
 <span id="cb79-1137"><a href="#cb79-1137" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb79-1138"><a href="#cb79-1138" aria-hidden="true" tabindex="-1"></a><span class="fu"># Referencias</span></span>
 <span id="cb79-1139"><a href="#cb79-1139" aria-hidden="true" tabindex="-1"></a></span>
